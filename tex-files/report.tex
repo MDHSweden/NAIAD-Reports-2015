@@ -1,0 +1,195 @@
+% Document type
+%!TEX TS-program = xelatex
+\documentclass[10pt, titlepage]{article}
+	% Packages
+	\usepackage{fontspec}
+	\usepackage{fancyhdr}
+	\usepackage{enumerate}
+	\usepackage{listings}
+	\usepackage[titletoc]{appendix}
+	\usepackage[pdfborder={0 0 0},colorlinks=true, urlcolor=blue, citecolor=red, bookmarks=false]{hyperref}
+	\usepackage[margin=3cm]{geometry}
+	\usepackage[section]{placeins}
+	\usepackage{url}
+	\usepackage{tabularx}
+	\usepackage{gensymb}
+	\usepackage{caption}
+	% Page style
+	\pagestyle{fancy}
+	\marginparsep = 0pt
+
+	% Set font
+	%\setromanfont{Calibri}
+
+	\renewcommand\contentsname{Table of Contents}
+	\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+	% Code style
+	\lstset{
+		backgroundcolor=\color[rgb]{0.92,0.92,0.92},
+		basicstyle=\footnotesize,
+		showspaces=false,
+		showstringspaces=false,
+		showtabs=false,
+		tabsize=2,
+		captionpos=b,
+		breaklines=false,
+		keywordstyle=\color[rgb]{0,0,1},
+		commentstyle=\color[rgb]{0.133,0.545,0.133}
+	}
+\begin{document}
+\begin{titlepage}
+% Title
+\input{./Title/title.tex}
+\end{titlepage}
+%\date{}
+%\maketitle
+
+% Page style	
+\thispagestyle{fancy}
+\fancyhead[R]{Project Naiad, under water robot 2014/2015}
+\fancyhead[L]{Mälardalen University}
+\fancyfoot[L]{}
+%\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Begin actual text
+
+\def\abstract{
+   \vfil
+\begin{center}%
+{\bfseries\abstractname\vspace{-.5em}}
+\end{center}
+\itshape
+}
+
+\def\endabstract{\par
+}
+% ============================= Abstract ==============================
+\begin{abstract}
+Naiad is an Autonomous Underwater Vehicle, created by students from Mälardalen University in Västerås, Sweden. The aim for this robot is to, at first, enter a competition in San Diego, USA called RoboSub during the summer of 2015. The long term goal is to clear the Baltic Sea from toxic waist. For Naiad to be able to complete missions given to it in autonomous fashion a set of sensors and actuators was needed. 
+
+The final result of this project is an underwater robot which autonomously can solve simple tasks. A vision system, sensor system as well as some mission and path planning has been implemented during the project.  
+ 
+This report describes the different parts of the construction and development of Naiad. The report covers all parts of the system, mechanics, electronics and software. 
+\end{abstract}
+\newpage
+% ========================== Document version ===========================
+%\begin{center}
+%	\begin{tabular}{|l|l|l|}
+ %		
+	%	\multicolumn{3}{c}{\textbf{{\large Document version}}} \\
+	%	\hline
+ 	%	Version & Date & Note \\ \hline
+ 	%	 &  &  \\ \hline
+	%	 &  &  \\ \hline
+	%	 &  &  \\ \hline
+	%	 &  &   \\ \hline
+	%	 &  &   \\ \hline
+	%	 &  &   \\ \hline
+%	\end{tabular}
+%\end{center} 
+%\newpage
+%========================== Table of contents ===========================
+\hypersetup{linkcolor=black}
+\tableofcontents
+\hypersetup{linkcolor=red}
+
+\newpage
+
+% ============================== Intro ===============================
+\input{./Introduction/Introduction}
+
+\newpage
+\input{./Purpose/Purpose}
+\newpage
+\input{./Background/Background}
+\newpage
+\input{./Method/Method}
+
+\newpage%
+\input{./Competition/Competition}
+%\newpage
+% ============================= Mechanics =============================
+
+\newpage
+\input{./Mechanics/Mechanics}
+\newpage
+% ============================= Electronics =============================
+
+\newpage%
+\input{./Electronics/Electronics}
+
+% ============================= Software =============================
+\newpage%
+\input{./Software/Software}
+
+% ============================= Final words ============================
+\newpage
+\input{./Results/Results}
+\newpage
+\input{./Discussions/Discussions}
+\newpage
+
+%\section{Acknowledgments}
+
+% ============================= References ============================
+\newpage
+\bibliographystyle{plain}
+\bibliography{./Bibliography/NAIAD}
+\addcontentsline{toc}{section}{References}
+
+% ============================ Appendices =============================
+\newpage
+\begin{appendices}
+
+	\input{./Appendices/Electronic_schematics}
+	\clearpage
+	
+	\input{./Appendices/System_tests}
+	\clearpage
+	
+	%\input{./Appendices/Mechanical_tests}
+	%\clearpage
+
+	\input{./Appendices/Unit_test_MCU_CAN}
+	\clearpage
+	
+	\input{./Appendices/Unit_test_Power_Borad}
+	\clearpage
+
+	\input{./Appendices/Mechanics_exploded_views}
+	\clearpage
+
+	\input{./Appendices/Thruster_configuration}
+	\clearpage
+	
+	\input{./Appendices/Mechanical_drawings}
+	\clearpage
+
+	\input{./Appendices/Software-interface}
+	\clearpage
+	
+	\input{./Appendices/User_guides}
+	\clearpage
+
+	\input{./Appendices/User_guides_of_interface}
+	\clearpage
+
+	\input{./Appendices/Retailers}
+	\clearpage
+
+	\input{./Appendices/Bill_of_materials}
+	\clearpage
+	
+	\input{./Appendices/GIMME-2}
+	\clearpage
+	
+	\input{./Appendices/Open_CV}
+	\clearpage
+	
+	\input{./Appendices/BBB_user_guide}
+\end{appendices}
+
+\end{document}

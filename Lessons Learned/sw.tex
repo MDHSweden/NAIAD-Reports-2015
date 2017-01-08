@@ -1,0 +1,56 @@
+\documentclass[11pt,a4paper]{amsart}
+\usepackage[a4paper,vmargin={20mm,20mm},hmargin={20mm,20mm}]{geometry}
+\usepackage[swedish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[pdfborder={0 0 0},colorlinks=true, urlcolor=blue, citecolor=red, bookmarks=false]{hyperref}
+\usepackage{url}
+\title{Lessons learned, software in CDT508/DVA410}
+
+\author{[Jonatan, Hampus, Joakim and Wenkai]}    					%Enter your name here   
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item[1.]\textbf{Communication standards} \\Spend time on planning things like internal communication. This will reduce time for debugging the system. This year the software group a thoroughgoing discussion about how to set up standards and what protocols to use. Thanks to this it worked almost instantly when everything was tested together for the first time.
+
+\item[2.]\textbf{Reuse of old code} \\Never trust code that one have not seen tested enough. Even if the code looks perfect in theory, it needs to be tested. This might be caused by hardware limitations as well.
+
+\item[3.]\textbf{Shared documents} \\Being able to share documents is a crucial thing for fast development. But not if two people can not write in the document at the same time if it will overwrite the other persons work.
+
+\item[4.]\textbf{Create an good test environment} \\The last weeks, with no water-tests planned a joystick was implemented to control Naiad. This was done to easy test the control. If this would have been done earlier in the project each test would have been more efficient. \\One should be able to test its code on a separate unit, in this case for example only an BeagleBone Black instead of the need in most cases be connected to the whole system.
+
+\item[5.]\textbf{Have enough hardware} \\When having to share equipment such as  programmer or debugging tool there will be time one have to wait to be able to continue its work. This is of course not optimal. Make sure that everyone who needs equipment, within economic limits, gets it as soon as possible. Preferably also one extra setup as well, things break.
+
+\item[6.]\textbf{Quantity or quality, give me both of them!} \\Many small programs/libraries beats large ones every day. Make/implement small well tested. It is easier to test, review and change. 
+
+\item[7.]\textbf{Unit tests} \\By making test programs that tests different possible situations one can save a lot of time to see if the system is working properly.
+
+\item[8.]\textbf{Keep people updated} \\Keep people updated of what actually should be done, don't trust that people get it correct in the first place.
+
+\item[9.]\textbf{Document often} \\Document often so that you remember what you have done and when.
+
+\item[10.]\textbf{Backups} \\Keep backups of what you have done, use some sort of revision control system.
+
+\item[11.]\textbf{Cross compile} \\Cross compilation could save a lot of time if compilations is common.
+
+\item[12.]\textbf{Latex figure placement} \\Latex places figures in weird places sometimes, keep that in mind.
+
+\item[13.]\textbf{If it does not work, it does not count} \\Writing a lot of code that hardly works or at best is mediocre is not to use for anyone. Only code that does what it is supposed to and does that good can be used in a real system and is all that counts.
+
+\item[14.]\textbf{Take breaks away from the computer} \\Make sure to take breaks away from the screen. Go grab a coffee or get some air, talk about your code or anything else, this will improve your efficiency, mood and the spirit of the team.
+
+\item[15.]\textbf{Ease of use} \\ Find and use proper methods and software to support the development. For example, implementing a system to make it simpler to deploy new software, good user interface to access the target hardware and having a standard way of handling a software project to always know where different parts should be. All this can reduce unnecessary time spent repeatedly browsing folders and doing tasks in a limited environment. 
+
+\item[16.]\textbf{Communication is important} \\Worked in a team, communication is very important especially when faced some problems, maybe some member in the team know how to solve that problem quite well, so tell what kind of trouble you have to the team members.
+
+\item[17.]\textbf{Time arrangement} \\ If you want to learn some new knowledge or want some part of the work done, you need spend enough time and focus on it.
+
+\item[18.] \textbf{Design first and implement second} \\ When develop some software, the most important thing is a good enough design, then the implementation and test will be piece of cake. 
+
+
+
+\end{enumerate}
+
+
+\end{document}  

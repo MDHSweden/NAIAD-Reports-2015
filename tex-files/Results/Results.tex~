@@ -1,0 +1,21 @@
+\newpage
+\section{Results}
+
+\subsection{Mechanics results}
+Last years group had developed and constructed the main hull. This has both been a blessing and a curse. Some decisions on design was already complete meaning some workaround was necessary. At the same time a as it has been good to have a base to start from. Since the main hull was complete it was mostly peripherals than needed to be created this year. For example the Wings. The wings have been 3D printed with attachments for LEDs to show state in the program as well as the Hydrophones. 
+
+Also the entire tool-plate needed to be designed. The tool plate was divided in to a front and back tool-plate and are designed to be changeable in case other functionality was decried. The front tool-plate have been constructed and contains most of the equipment for the RoboSub Competition. For example torpedoes and markers. The side scan sonar is also mounted in the from tool-plate The back is at the moment an empty support structure where tools can be attached. The gripper has not been finalised since the project run out of time. 
+
+\subsection{Electronics results}
+The electronic group has continued the work from last year and adding more functionality to the cards designed the previous year. This added functionality have for the most part been by add-on cards to the exiting cards but also a redesign of the MCU CAN card have been done in order to get more out of the MCU itself. This new card can not at present time completely replace the cards developed last year but there is the belief of the group that this can be done with another redesign.  
+
+Part of the functionality that have been added is hydrophones to be able to hear a pinger used in the RoboSub competition. A Speed-logger to help determine position in the water. Last year the group worked on a card to support the fibre optical gyroscope to help determine yaw position this work has continued since it was not working at the end of last year. RGB-LEDs have been added to the wings to communicate with the surface. A remote control to navigate though menus on the display when Naiad is on the surface have been implemented as well as a card to control the solenoids in the tool plate. Also a side scan sonar have been implemented in to the system.  
+
+\subsection{Software results}
+Most of the software and protocols running in Naiad have been tested firmly, by observation over time and trying to break them. If something essential failed, it has been prioritized until working as supposed. By focusing on robustness a good base for future work have been built.
+A lot of work have been done to get a node based system running. With that working much time can be saved for testing new sub-programs, since the ease of adding a new node. This also helps for testing the robustness of that program. 
+The PID-controller and path-planner have been tested in simulation and in real life, both working good but need some tuning to work great.
+The simulator have been tested with orientation and translation with correct results.
+The graphical user interface is yet to be tested for sending missions to the robot, but the tests done so far shows good results. The communication part of the graphical user interface still need to be finished and implemented both in the GUI and in Naiad.
+The vision system have been tested with acceptable result for the purpose, a problem have been the lenses narrow visual angle causing it to easy loose sight of objects. The frequency of the program needs to be increased by a lot to work efficient enough.
+Most of the CAN-nodes works without any problems. The most common problems seems to be caused by SPI or UART, the time needed to firmly fix the firmware for these protocols have not been prioritized due to time issues and that the impact would not be essential.

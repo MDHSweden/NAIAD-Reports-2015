@@ -1,0 +1,286 @@
+% This is a short template intended as a complement given
+\documentclass[cleardoublepage=plain]{scrartcl}
+
+% Package that allows more image formats to be included
+\usepackage{graphicx}
+
+% Package that allows international symbols
+\usepackage[utf8x]{inputenc}
+
+% Some packages containing math symbols and formatting
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Package containing theorem, lemma and proof environments
+\usepackage{amsthm}
+
+% Package for easy inclusion of source code
+\usepackage{verbatim}
+\usepackage{alltt} 
+
+% Package that adds automatic hyperlinks to your document
+\usepackage[hyperindex=false]{hyperref}
+\hypersetup{
+plainpages=false,
+colorlinks=false,
+linkbordercolor={1 1 1}, % set to white
+citebordercolor={1 1 1}, % set to white
+urlbordercolor={1 1 1} 	 % set to white
+} 
+
+% Removes indentation when starting a new paragraph
+
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+
+% Various important information about the document
+\title{Robotics Project 2015 - CDT508\\ \Huge{SWARM}}
+\author{\begin{tabular}{ll}
+Peter Cederblad & pcd11001@student.mdh.se\\
+Albin Barklund & abd11003@student.mdh.se\\
+Roxanne Anderberg & rag11001@student.mdh.se\\
+Ragnar Moberg & ragnar.morberg@gmail.com\\
+Sudhangathan Bankarusamy & sby14001@student.mdh.se
+\end{tabular}
+\vspace*{0.5cm}\\ Märlardalens University \\ Västerås, Sweden}
+
+\maketitle
+\thispagestyle{empty} 
+\newpage
+
+% Removes page number from title page
+\thispagestyle{empty} 
+
+\input{Project_Introduction}
+\newpage
+% Creates table of contents
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+
+
+\newpage
+\section{Goals}\label{sec:Goals} 
+For the Naiad platform the goals has been to build a second robot. Improve the power supply on the first robot. Go from ethernet cable to a wireless system for communication with the robot in surface mode. Also to develop two different underwater communication systems. One short range but fast with LED technology and one long range but more slow using sonar technology.
+
+
+\section{Milestones}\label{sec:Milestones} 
+Naiad
+\begin{itemize}
+  \item Current system up and running
+  \item Wireless communcation using standard router
+   \item Build new tail antenna
+  \item New power supply
+   \item Underwater light communication up and running
+    \item Side sonar up and running
+    \item Long range underwater communication up and running
+\end{itemize}
+
+Naiad sister
+\begin{itemize}
+\item Body
+\item Build interial for electronics
+\item Build all electronics
+\item Communication interface
+\item Light Communication between two robots
+\end{itemize}
+
+Wireless communication
+\begin{itemize}
+\item Specification
+\item Underwater test
+\item Tail Antenna complete
+\end{itemize}
+
+Light communication system
+\begin{itemize}
+\item Specification
+\item Land test, Prototype solution
+\item Underwater test, working solution
+\end{itemize}
+
+Swarm behavior
+\begin{itemize}
+\item Self-coordinate system
+\item S-DASH in Matlab
+\item S-DASH on kilobots
+\end{itemize}
+
+
+
+\section{Requirements}\label{sec:Requirements} 
+Naiad platform new power supply, ring design.% Kolla med Albin
+The wireless router shall be small enough to fit inside the current platform.
+The wireless router must be able to work in the current system without major changes to the power plant.
+The antenna for the wireless communication system shall resemble a stingray tail.
+The antenna shall be stiff.
+The antenna's length shall be 30 procent of the length of the Naiad platform.
+The toolplate shall be able to mount the side sonars developed by DeepVisionAB in Lindköping.
+The toolplate shall be build of the same material used on the current platform.
+The underwater light communication shall be able to work in pool water with a range of 100 m.
+The long range underwater communication system 
+
+
+
+
+
+\section{Planning}\label{sec:Planning} 
+The plan for the the Naiad platform this fall has been
+\begin{itemize}
+\item Current system knowledge
+\item Current system up and running
+\item Test: water leakproof
+\item Test: Old system dive
+\end{itemize}
+
+The plan for development of the wireless communication
+\begin{itemize}
+\item Specification for wireless communication
+\item Develop wireless communication
+\item Test: Wireless communication system
+\item Verification and validation on the improved Naiad
+\item  Build tail antenna
+\end{itemize}
+
+The plan for side sonar overlapping with stereovision
+\begin{itemize}
+\item Specification of sonar element for overlapping image with stereo vision
+\item Order hardware for sonar element
+\item Design
+\item Build sonar holder for Naiad
+\item Implemention: Software overlapping between sonar and Gimme 2
+\item Test: Sonar and Camera in a big pool
+\item Verification and validation
+\end{itemize}
+
+The plan for Naiads sister
+\begin{itemize}
+\item Specification on Naiads sister
+\item Design
+\item Buy hull and motors
+\item Build interial for the electronics
+\item Build the electronics
+\item Implement new software
+\item Integrate subsystems
+\item Test: Water leakage proof
+\item Test: Naiads sister dive test
+\end{itemize}
+
+The plan for the light communication system
+\begin{itemize}
+\item Specification light communication
+\item Design light communication
+\item Develop light communication system
+\item Test: Blink light communication
+\item Verification and validation
+\end{itemize}
+
+The plan for the long range communication system
+\begin{itemize}
+\item Specification for sonar communication
+\item Design sonar communication system
+\item Develop sonar communication
+\item Test: Sonar communication
+\item Verification and validation
+\end{itemize}
+
+The plan for the landbased platform
+\begin{itemize}
+\item Read state of the art
+\item Specification on the landbased robot platform
+\item Search for landbased robot platforms
+\item Order landbased robot platform
+\item Hands on sytem knowledge on the purchased system
+\end{itemize}
+
+The plan for the swarm behavior
+\begin{itemize}
+\item Read state of the art
+\item Design: Information repressentation
+\item Design: Path Planning
+\item Develop algoriths for swar behavior
+\item Development of simulator
+\item Implementation on landbased platforms(Kilobots)
+\item Test on AUV scenarios
+\item Verification and validation for AUV scenario 1
+\item Verification and validation for AUV scenario 2
+\item Test on landbased platforms()
+\item Verification and validation on landbased platform
+\end{itemize}
+
+The plan for presentation
+\begin{itemize}
+\item Result of landbased swarm system
+\item simulation result for AUV scenario 1 and 2
+\item Result on the light communication system
+\end{itemize}
+
+Chrismas holiday
+Report writing and time for completion
+
+\input{Naiad_Old}
+
+\input{Naiad_Sister}
+
+\input{Wireless_Communication}
+
+\input{Underwater_Communication}
+
+\input{Sonar_Communication}
+
+\input{Swarm_behavior}
+\newpage
+\input{Appendices}
+
+
+
+
+
+\newpage
+\begin{thebibliography}{1}
+
+\bibitem{vectornav}
+VectorNav. [Online]. Available: \\
+https://ams.com/eng/content/download/302565/1085449
+
+\bibitem{rugged}
+VN-100 Rugged. [Online]. Available: \\
+http://www.vectornav.com/products/vn100-rugged
+
+\bibitem{manual}
+VN-100 User Manual. [Online]. Available: \\
+http://www.vectornav.com/products/vn100-rugged/documentation
+
+\bibitem{max232}
+MAX232AEWE+ datasheet. [Online]. Available: \\
+http://www.farnell.com/datasheets/76791.pdf
+
+\bibitem{test}
+how to check max232 IC ok or damaged. [Online]. Available: \\
+http://www.edaboard.com/thread223866.html
+
+\bibitem{Ruben}
+RUBENSTEIN, Michael. Self-assembly and self-healing for robotic collectives. 2009. PhD Thesis. University of Southern California.
+
+\bibitem{kilobotsLabs}
+Documentation on the original laborations. [Online.]Available: \\
+https://www.kilobotics.com/labs
+
+
+\bibitem{kilobotsK-Team}
+Documentation on the kilobot platform. [Online.]Available: \\
+http://ftp.k-team.com/kilobot/user\_manual/Kilobot\_UserManual.pdf
+
+
+
+
+
+
+
+
+\end{thebibliography}
+
+\end{document}

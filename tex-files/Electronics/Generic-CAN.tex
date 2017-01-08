@@ -1,0 +1,14 @@
+\subsection{Generic CAN} %Anette
+The generic CAN-cards from the previous group can handle several kinds of signals. This is a good base but to effectively use the cards features additional peripheral electronics are required. Therefore shields or add-on cards for these CAN-cards to add functionality to them has been created.  These add-on cards are discussed in more detail in their separate sections. 
+In the beginning it was sufficient to only do these add-on cards to the old CAN cards. When it was decided to save space by controlling several motor controllers on one card, it was discovered that the PWM signals on the old card was insufficient both in number and in resolution. It was therefore decided to make a new generation of the card. This time with six high quality PWM signals since the MCU could provide this but at the moment these outputs were not connected. 
+
+To speed up the process of creating this card, as much as possible was kept from version 4.4. At the time the card was redone, no schematics of the card was available but the board-design file was accessible. The required traces were simply re-drawn and the rest left as is. The user-LED, a LED that can be controlled in software, was occupying one of the high quality PWM signals from the MCU. It was therefore moved from MCU pin 6 to pin 14. After miscommunication in the group it was believed that the SPI interface were not used and was therefore removed in version 5.0. 
+
+It is believed that it is possible to keep the SPI in future generations. By moving the two PWM signals that are currently located where the SPI used to be in 4.4 to the other side of the 5V (where the M\_PWM are located on version 4.4). This would require the motor extension board and the LED-control board to be modified as well. If this was done the same card should be able to be used on all locations of the system adding to the robustness of the system and require less spare parts to be brought to San Diego. At the moment both version 4.4 and version 5.0 are in the system.
+%referea till scematics 
+%The 4.4 version as an error in the silk screen of the electrolyte condensator 
+%NEW STACKS FOR THE CARDS
+	
+	
+% The incorrect footprint of electrolyte capacitors
+% 5.0 has been "printed" without silc screen

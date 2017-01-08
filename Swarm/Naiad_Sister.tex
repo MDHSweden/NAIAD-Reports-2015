@@ -1,0 +1,49 @@
+
+
+\section{Naiad sister}
+\label{sec:Naiadsister}
+\subsection{Introduction}
+The second Naiad has begun to take place. At least the major part of the hull and the thrusters has arrived to the school. Unlockely there has not been so much time in order to assemble the hull or the thruster hulls. A new power supply has been discussed, but the students in charge of that has not documented it. The same for the thruster hulls. But an new IMU card has been made to the new IMU.
+
+\subsection{IMU card - Roxanne Anderberg}
+\subsubsection{Description and Requirements}
+For measuring yaw, pitch and roll, Naiad uses an inertial measurement unit. In this case VN-100 Rugged~\cite{rugged} from Vectornav~\cite{vectornav}.
+VN-100 Rugged can communicate through TTL or RS-232 and since Naiad's CAN card has UART the decision of making a UART RS-232 adapter was made. Luckily there are transceivers on the market for just that kind of adaption.
+
+
+\subsubsection{Design and Interface}
+For making an UART RS-232 adapter you only need a transceiver~\cite{max232} and the matching capacitors for that transceiver. On this card I have also made pinouts that have been carefully measured so the card can match the CAN cards perfectly as an extension card. The second and final version of the IMU card have shorter sides so that the communication group can reach the pins for the debugging on the CAN card without having to remove the IMU card. There also been added test points for testing the transceiver.
+
+
+
+\subsubsection{Testing}
+For testing the transceiver to make sure it is not broken I used a few steps found on a forum~\cite{test}:
+"Troubleshooting this IC is not difficult. 
+Power up the MAX232 and check voltage across supply pins to insure correct voltage input. 
+The following two tests check each "TTL in - RS232 out" converter. 
+Put 0 volts into pins 10 and 11, then check pins 7 and 14. Should have about 10 volts output on each. 
+Put 5 volts into pins 10 and 11, then check pins 7 and 14 again. Should have about -10 volts output on each. 
+If that succeeded, then check each "RS232 in - TTL out" converter. Connect pin 7 to pin8. Connect pin 13 to pin 14. This will be a "loopback test". 
+Put 0 volts into pins 10 and 11, then check pins 9 and 12. Should have about .6 volts output. 
+Put 5 volts into pins 10 and 11, then check pins 9 and 12 again. Should have about 4.5 volts output."\\
+\\
+For testing the circuit you can use an oscilloscope on the UART pins and the RS-232 pins to make sure that they receive/send the right data.
+%lägga till något om hur fyrkantsvågen ska se ut här??
+
+
+\subsubsection{Using the system}
+The card is very much plug and play, but before using the IMU it is very importing to read the manual. There suppose to be manuals in the school but one can also find them online~\cite{manual}. 
+%lägga till något om tutorial??
+
+
+\subsubsection{Future Work for IMU card}
+The card that has been printed is not a card that should be used because it has some faults. Find a good MAX232, there is many versions. Test it on a breadboard first to see if the direction of the capacitors are the same as the datasheet. For printing out in school, make sure to have the traces to the hole mounted components on the other side of the card. Will be a bit hard to solder otherwise.
+Also future work is the cabeling between the IMU and the PCB. The Harwin connector, see table~\ref{BOM}, is very expensive and difficult to attach. The IMU must have the female version but for the card I would recommend another type of connector. 
+
+
+
+\subsection{Conclusions(Peter Cederblad)}
+There are a lot here that can be improved from the first robot. No need to rush it and make bad decisions.
+
+\subsection{Future work Naiad sister}
+Everything.

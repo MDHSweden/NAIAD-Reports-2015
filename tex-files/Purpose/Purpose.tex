@@ -1,0 +1,89 @@
+\section{Aim}
+This project was conducted during the project courses CDT508 (Robotics - project course) and DVA425 (Project in advanced embedded systems). The purpose was to create a fully functioning robot that could compete in the 2015 RoboSub competition in San Diego, USA. To do this a number of things had to be implemented such as a vision system, a set of sensors and actuators as well as some kind of mission plan and control system.
+\subsection{Objectives}
+\renewcommand{\labelenumi}{\arabic{enumi}.} 
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+A set of requirements was set by the client. The requirements consisted of three parts, functional requirements, missions for RoboSub 2014 that should be implemented and nonfunctional requirements. The functional requirements were physical things that should be done, the nonfunctional requirements were for example that the software should be layered, with hardware support as the first (lowest) layer and that the documentation was to be written in \LaTeX . To test the system and prepare for entering RoboSub 2015 the requirement to perform some of the missions from RoboSub 2014 was added. Since the project was already started, some of the requirements was already fulfilled. 
+
+\begin{enumerate}
+\label{requirements}
+\item Functional requirements
+\begin{enumerate}
+\item The robot should be built using a mono-hull.
+\item The hull should be easy to open and close.
+\item The cabling should be very efficient and easy to manage.
+\item A communication cable for remote operation should use either Ethernet or an optical fibre. 
+\item The robot should be able to operate using external power (preferable through an umbilical including optical fibre/Ethernet).
+\item The umbilical ends in a box that connects to the robot. 
+\item There should be a Kill Switch.
+\item There should be a Mission Switch.
+\item There should be indicators like LEDs and/or LCD-display.
+\item Actuators
+\begin{enumerate}
+\item Every actuator has its own micro-controller.
+\item All actuators should operate over the CAN-bus.
+\item The motors should preferable be BLDC, but ordinary DC-motors can be used.
+\item Make new own BLDC-driver. One Controller two motors.
+\item There should be two droppable markers.
+\item There should be two unpowered torpedoes.
+\item There should be a simple manipulator that can grip an object and release the object.
+\item A LED-light for cameras.
+\end{enumerate}
+\item Sensors
+\begin{enumerate}
+\item All low rate sensors should operate over the CAN-bus.
+\item High speed sensors should operate over Ethernet (GIMME-2).
+\item Every sensor has its own compute power.
+\item There should be a pressure sensor. 
+\item There should be a sensor for water temperature.
+\item There should be a sensor for salinity in the water.
+\item There should be a speed logger (measures the speed in two directions.
+\item There should be an 9-DOF IMU.
+\item There should be an independent gyroscope for the yaw angle.
+\item There should be an active two dimensional sonar.
+\item There should be a passive two dimensional broadband sonar (20kHz  - 40kHz).
+\item There might be a system for finding direction and distance of cooperative robots based on ultrasonic sensors.
+\item There should be two stereo camera systems or one system that fast and accurate can tilt (Two GIMME-2).
+\item The fibre optical gyro shall be installed.
+\end{enumerate}
+\item Communication
+\begin{enumerate}
+\item The communication system between nodes should use the CAN-bus.
+\item The project should study Space Plug and Play Avionics (SPA) system and implement part of it.
+\item There should be a communication mechanism for robot-robot communication (in case of cooperative robots).
+\end{enumerate}
+\item Software
+\begin{enumerate}
+\item The firmware (Software for the micro controllers) should be downloaded via the CAN-bus.
+\item The firmware should be handled by a configuration manager.
+\item Compare the latest Vasa-code and Naiad-code, extract the best parts. Document the arguments.
+\end{enumerate}
+\item There should be a simulator for the mechanical and electronic parts.
+\item There should be a simulator for the software system.
+\begin{enumerate}
+\item The simulator should be able to handle more than one instance of the robot.
+\item The simulator should handle inter robot communication. 
+\item The GUI of the simulator should be used to monitor the actual robot in operation.
+\end{enumerate}
+\end{enumerate}
+\item Missions for Robosub 2014 that shall be implemented.
+\begin{enumerate}
+\item Pinger: Go and bring things on the bottom and move.
+\item Gate: Go through gate with visual servoing. 
+\item Bouy: Identify and hit. 
+\item Bin: Identify and drop marker.
+\item Torpedo: Find opening and fire torpedo.
+\end{enumerate}
+\item Nonfunctional requirements
+\begin{enumerate}
+\item The programming language should be Ada and using the Ravenscar profile.
+\item The software should be layered, with hardware support as the first (lowest) layer. 
+\item The software should be based on principles for component based software engineering. 
+\item The documentation should be written using Latex.
+\item The preferred computer in the system is the GIMME-2.
+\item The batteries should be easy to change.
+\item Make a complete test plan.
+\end{enumerate}
+\end{enumerate}
+

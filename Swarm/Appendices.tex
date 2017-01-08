@@ -1,0 +1,134 @@
+
+
+\newpage
+\section{Appendices}
+\appendix
+\label{App:appendix}
+\section{IMU - Bomlist(Roxanne Anderberg)} \label{App:IMUBomlist}
+\begin{table}[ht]
+	\centering
+	\resizebox{\linewidth}{!}{%
+	\begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+  \multicolumn{6}{|c|}{BOM} \\
+  \hline
+	Name & Vendor & Ordernr & RefDes & Value & Shape \\ \hline
+	Electrolyte Capacitor & Würth & 865230640001 & C1 & 0.1uF & CAPAE430X540N \\ \hline
+	Electrolyte Capacitor & Würth & 865230640001 & C2 & 0.1uF & CAPAE430X540N \\ \hline
+	Electrolyte Capacitor & Würth & 865230640001 & C3 & 0.1uF & CAPAE430X540N \\ \hline
+	Electrolyte Capacitor & Würth & 865230640001 & C25 & 0.1uF & CAPAE430X540N \\ \hline
+	Harwin male connector & Farnell & 1144561 & IMU\_CON & HDR2X5 & Harwin\_Male \\ \hline
+	LED SMD & School &  & LED4 & LED\_blue & INDC1608X95N \\ \hline
+	2.54 mm pin header & Würth & 61300411121 & POWER & HDR1X4 & HDR1X4 \\ \hline
+	Resistor SMD & School &  & R24 & 2.2kOhm & RESC1608X63N \\ \hline
+	2.54 mm socket head & Würth & 61300211821 & TEST\_HEADER & HDR1X2 & HDR1X2 \\ \hline	
+	2.54 mm socket head & Würth & 61300211821 & TEST\_JP & HDR1X2 & HDR1X2 \\ \hline
+	Tranceiver & Farnell & 9724370 & U12 & MAX232AEWE+ & SOIC127P1032X265-16N \\ \hline	
+	2.54 mm pin header & Würth & 61300411121 & UART1 & HDR1X4 & HDR1X4 \\ \hline
+	2.54 mm pin header & Würth & 61300411121 & UART2 & HDR1X4 & HDR1X4 \\ \hline
+	\end{tabular}}
+	\newline
+	\caption{BOM} \label{BOM}
+\end{table}
+
+
+%\vspace{20 mm}
+
+
+
+\section{IMU - Schematics and CAD} \label{App:IMUSchematicsAndCAD}
+The schematics have made in multisim and the CAD files have been made in ultiboard.
+
+
+\begin{figure}[!htbp]
+    \centering
+        \includegraphics[width = \columnwidth]{IMUschematics}
+        \caption{Schematics for the UART RS-232 adapter} \label{schematics}
+\end{figure}
+
+
+\begin{figure}[!htbp]
+\centering
+    %\begin{subfigure}[b]{\textwidth}     
+    \includegraphics[scale=0.5]{IMUcoppertop}
+        \caption{Top Layer}
+        \label{fig:top}
+  %  \end{subfigure}
+    
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+  %  \begin{subfigure}[b]{\textwidth}
+        \includegraphics[scale=0.7]{IMUcopperbottom}
+        \caption{Bottom Layer}
+        \label{fig:bottom}
+  %  \end{subfigure}
+    \caption{CAD model of the extension card}\label{fig:CADmodel}
+\end{figure}
+
+
+
+
+\newpage
+\section{Mechanics Group's report(Ragnar Moberg)} \label{App:MechanicsReport}
+\begin{figure}[!htbp]
+\centering  
+    \includegraphics[scale=0.7]{Mechanics_Report}
+        %\caption{Mechanics Group's report}
+        \label{fig:M_R}
+\end{figure}
+
+
+
+
+
+\newpage
+\section{Light communication - BOM(Albin Barklund)}\label{App:LightCommunicationBOM}
+\begin{tabular}{l l l}
+{\bf Name} & {\bf Vendor} & {\bf Ordernumber}\\
+Blue LED & DigiKey & XPCBLU-L1-R250-00V01TR-ND \\
+Photodiode Blue & DigiKey & SD019-141-411-BCT-ND\\
+\end{tabular}
+
+
+\section{Trello Cards(Peter Cederblad)}
+\input{TrelloCards}
+
+
+\newpage
+\section{Contact list}
+\begin{tabular}{l l p{5cm} l}
+{\bf Name} & {\bf Role} & {\bf contact information}\\
+Daniel Adolfsson & Project leader-ROARy & dla.adolfsson@gmail.com  0702476546\\
+Robin Andersson & Project leader-Butler  & roband3333@hotmail.com  0708936629\\
+Peter Cederblad &  Project leader-Swarm & peter\_cederblad@hotmail.com  0733320201\\
+Joakim Kareliusson & Project leader-UAV  & j.kareliusson@hotmail.com  0707653373\\
+Ragnar Moberg & Mechanics pool leader  & ragnar.moberg@gmail.com  0702375222\\
+Oscar Svensson &  Mechanics & hydralhammare@hotmail.com  0737826532\\
+Albin Barklund &  Hardware pool leader & albin.barklund@gmail.com  0707679968\\
+Roxanne Anderberg &  Hardware & roxanne.anderberg@hotmail.com  0762006256\\
+Erick Vieyra & Hardware  & sevieyra@gmail.com  0768255038\\
+Emil Johansson &  Hardware & emil.kex@gmail.com  0736812476\\
+Jonatan Tidare & Software pool leader  & jte11001@student.mdh.se   0704943558\\
+Anders Olsson & Software  & aon11013@student.mdh.se  0702487468\\
+Mobin Hozhabri &  Software & mhi14003@student.mdh.se  0737697724\\
+Dennis Eklund & Software  & eds04001@student.mdh.se  0764177124\\
+Tobias Kriström & Software  & tkristrom@gmail.com  0738272781\\
+Rickard Holm &  Software & holm.rickard@gmail.com  0732523205\\
+Mattias Bäckström &  Software & mattias.bax@live.se  0739050014\\
+Ludvig Langborg &  Software & lig11005@student.mdh.se  0730251316\\
+Jakob Danielsson & Communication pool leader  & jdn11003@student.mdh.se  0738761377\\
+Nandinbaatar Tsog & Communication  & ntg14001@student.mdh.se  0722290720\\
+Tobias Andersson &  Communication &  tan10006@student.mdh.se  0735909074\\
+Marcus Larsson & Communication  & mln14013@student.mdh.se  0768000654\\
+Sudhangathan Bankarusamy & Communication  & sby14001@student.mdh.se  0768352404\\
+	
+\end{tabular}
+
+
+
+
+
+
+
+
+

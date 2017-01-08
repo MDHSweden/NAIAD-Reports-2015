@@ -1,0 +1,40 @@
+
+
+\section{Naiad old system}
+\label{sec:NaiadOldSystem}
+
+
+\subsection{Introduction (Peter Cederblad)}
+For this year a light communication system has started to take place and a wi-fi solution has been implemented. There has also been work done in making a new antenna for the wi-fi connection.
+We where also given the task at looking into how to integrate a side-sonar on the Naiad that in order to overlap the sonar picture with the stereo vision that is already onboard the platform. Not much work has taken place here, a few students went down to Lindköping and meet the company that are developing this kind of solutions. The companys name is Deep Vision AB.  There has also been work in manufacturing a new tool plate in order to be able to use the side-scan system.
+
+All systems that has been developed for the Naiad is also for the sister robot and will not be written about here. Instead all systems has there own section in this report.
+The mechanics group has written one report that covers all there work during this fall, it can be found in the appendix ~\ref{App:MechanicsReport}
+
+
+\subsection{Software Guide to Quick Starting NAIAD - Sudhangathan Bankarusamy(This subsection)}
+The NAIAD is mainly controlled by a Beagle Bone Black(BBB) running Ubuntu 12.04. Given below is a series of steps that will start the thrusters with a mission. Before starting with the steps below, care should be taken so that NAIAD is powered-up using 22.5V power source, both kill and mission switch is plugged in its respective slots, the UL(user led) LEDs on all CAN cards must be flashing. Also a computer, preferably a laptop should be connected to the network switch, using a LAN cable or connected to the wifi access point as explained in later sections, so that a network connection from the computer to the BBB exists. The IP address on the computer should be manually set to 192.168.1.10(192.168.1.xxx).
+
+\begin{enumerate}
+  \item From the the computer using a terminal type: \\ssh ubuntu@192.168.1.1 \\for password enter "ubuntu"
+  \item type:\\cd BBB/
+  \item type: \\sudo system.sh run \\in this step the all the programs necessary for the mission are running
+  \item In order for the thrusters to start, pull out the mission switch.\\At this point the thrusters should start working
+  \item Pulling out the kill switch will stop the mission and the mission will be restarted once the kill switch and mission switch are put back.
+  \item type:\\sudo system.sh kill \\This will stop all programs
+%  \item The third etc \ldots
+\end{enumerate}
+
+\subsection{Conclusions (Peter Cederblad)}
+There are a few systems that has begun to be implemented. However it is obvious that when a project like Naiad, that has a few years on the neck the students are starting to lose their interest in it. Especially when there are a lot of other projects around them that are newer.
+
+\subsection{Future work}
+On the Naiad platform there are several things that needs to be improved.
+\begin{itemize}
+\item Light communication system
+\item Sonar communication system
+\item Side-scan with stereo vision
+\item Wi-Fi antenna
+\item Toolplate
+\end{itemize}
+These are all subsystems that still has lots of work.

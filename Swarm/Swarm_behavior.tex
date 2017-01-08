@@ -1,0 +1,283 @@
+
+
+\section{Swarm behavior}
+\label{sec:Swarmbehavior}
+
+\subsection{Intoduction (Peter Cederblad)}
+In this part of the project there has been an investigation in collaboration between robots. Especially how to form shapes. This will be useful for the e.g. the schools underwater robots that will search and mark oil leakage. 
+
+The first thing any robot collective needs is a coordinate system, that has been the first of two things that this year has focused on. The second thing is to make a good starting point for the next year in terms of producing startup code for the kilobots, in c and to create a simulation environment in Matlab
+
+
+
+\subsection{Kilobot code}
+For a land based platform the kilobot platform~\cite{kilobotsK-Team} was chosen after a few weeks of investigation on different platforms. For the kilobots there has been produced a number of small programs for the students to start with, in order for them to get a quick introduction on how the kilobot API works~\cite{kilobotsK-Team}. These small programs consist of finished exercises. Exercises that was written for a different library~\cite{kilobotsLabs}, than the one that followed with the kilobots when they were purchased.\\
+A short description will be included her for each program.
+\begin{itemize}
+\item \textbf{Lab0\_Blinky.c}\\
+This is the first program to start with. It introduces a basic function and the purpose of this program is to show how to manipulate the onboard LED.
+Functions used are: Robot\_ID(), set\_color(), \_delay\_ms() and also in the main function init\_robot() and main\_program\_loop().\\
+The main function is the same in all programs and should never be changed, except with which function name the main\_program\_loop() should call.
+
+\item \textbf{Lab1\_1\_Simple\_movment.c}\\
+In this program the motors are added. They use two different function.\\
+spinup\_motors() and set\_motor(). Here the robot will move forward for a while and then turn in both directions. The robot will also turn on the LED in different colors.
+
+\item \textbf{Lab1\_2\_Nonblocking\_movment.c}\\
+The non-blocking program does the same thing as the first program, except this one take uses interrupt routines.
+
+\item \textbf{Lab2\_1\_Test\_speaker.c}\\
+Here the communication begins. The function message\_out() is introduced now and the variable enable\_tx. Which tells the robot that it is allowed to transmit messages. The robot will broadcast a fixed message.
+Program one robot with this program and another as a listener. 
+
+\item \textbf{Lab2\_2\_Test\_listener.c}\\
+This is the second part in the communication. The receiving robot. The get\_message() function is used to collect messages and put it in the message\_rx array. The program will also blink when a message is received.
+
+\item \textbf{LAB2\_3\_Test\_speaker\_mod.c}\\
+Now timeing is added. This program uses the variable kilo\_ticks which can be located in the libkilobot.c file, inorder to keep track off the time. It will then transmit a 0 or a 1 every other time. And off course blink in different colors depending if it is a 0 or a 1 in the message.
+
+\item \textbf{Lab2\_4\_Test\_listener\_mod.c}\\
+The message array is further explored in this program. First the robot looks if the number is even or odd, it the reads the distance from the sending robot. The LED is turn on and off in different colors depending on those to factors.
+
+\item \textbf{Lab3\_Putting\_it\_together.c}\\
+A multitasking robot is created here. It both sends and reads messages. If the robot receives a message it will start its motors in a random direction. This will make all robots, with time, lose connection to all there friends. When the robot does not receive any new messages it will stop and turn the LED white.
+
+\item \textbf{Lab4\_1\_Orbit\_star.c}\\%Here it is required to have two robots.
+This exercise requires two robots. One that can reuse the code from\\
+ Lab2\_1\_Test\_speaker.c, this robot will akt as a star. The other robot will receive messages from the star and it will try to move around the star in a circle with a fixed distance. This program in it self does not provide any real new functionality, but it is a good program to build more of. Add more robots and make them all move around the same star without crashing into one another.
+
+\item \textbf{Lab5\_Move\_to\_light.c}\\
+The kilobots also has an ambient light sensor. In this program the robots will try to move towards the light. This requires a dark space.
+four new function is used here. Mean\_Ambient\_Light(), kprinti(), kprints() and abs().
+
+\item \textbf{Lab6\_2\_Gradient\_simple.c}\\
+This program is the first one that can be called a little more advanced. Here the robots calculate distance in form of information hops from one predefined seed robot. Each robot will indicate the distance by turning on different colors on the LED.
+
+\item \textbf{Lab6\_Gradient\_adptive.c}\\
+This program is similar to the above, but here a timer is implemented as the gradient can change with time.
+
+\item \textbf{Lab7\_sync.c}\\
+In the sync program all robots start up with a random delay, and then makes a blink in a specific period, they also sends out a message so the neighbors know when the robot blinks. All robots will then change a little bit on the period of blinking in order to try to match up with each other. With time they will start to blink in sync.
+\end{itemize}
+
+There has also been created a .c file whith some start up code and the structure for the S-DASH. It is called SelfAssemblySelfHealing.c\\
+Functions that has been added to the predefined libkilobot.c are the following.\\
+The four first are more general for the kilobots, while the purpose of the rest is for the S-DASH algorithm:
+\begin{itemize}
+\item \textbf{extern int RobotID(int modulusWith)}\\
+This function collects sensor data from the ambient light sensor. It will then use this data to create a random number, which will be modulated with the input integer value. The function returns an integer value.
+
+\item \textbf{extern void spinup\_motors(int num)}\\
+For the kilobots to be able to move, they have to overcome the static friction between the legs and the surface. This function does just that. It will set the motor/motors on maximum value for 10ms. After this function the SetMotion() function shall be called. The input is an integer corresponding to which motor to turn on or both.
+\begin{itemize}
+\item 1: Both motors, this will make the robot ready to move the forward direction.
+\item 2: Right motor, this will make the robot ready to rotate in a counterclockwise direction.
+\item 3: Left motor, this will make the robot ready to rotate in a clockwise direction.
+\end{itemize}
+
+\item \textbf{extern void SetMotion(int current\_motion, int Direction)}\\
+This is the second function that has to be called in order to make the kilobots to move. It works in a similar way as spinup\_motors(), but the motor values are lower. The four global variables cw\_in\_straight, ccw\_in\_straight, cw\_in\_place and ccw\_in\_place are used. These variables can be tuned in order to make each kilobot move the desired bahavior.
+
+\item \textbf{extern int Mean\_Ambient\_Light(int num)}\\
+This function takes in an integer value. This integer is the amount of samples that shall be collected from the ambient light sensor. The function returns the mean value of all samples.
+
+\item \textbf{extern int fakultet(int N)}\\
+Calculates the factorial of the input integer and returns that number.
+
+\item \textbf{extern void SwapChar(char* str,int i, int j)}\\
+Change place on two characters in one array
+
+\item \textbf{extern void SwapInt(int arr[],int i, int j)}\\
+Change place on two integers in one array.
+
+\item \textbf{extern void PermuteStr(char* Ans, char* string, int start, int end)}\\
+The purpose of this function is to calculate all combinations of neighbors when checking which neighbors that can for a referensgrupp for the triangulation as well as for merging groups in the S-DASH algorithm.\\
+It takes in an string and prints out all combinations on the computer screen using the kprints() function.\\
+This function can be changed inorder to store the values for the robot to use instead of printing them on the screen
+
+\item \textbf{extern void PermuteInt(int Ans, int array[], int start, int end)}\\
+This function does the same thing as the above, but with and array of integers.The reason for the two implementations, is because the students for the up coming year can choose how to represent the neighbors.
+
+\item \textbf{extern void CheckAllNeighborsID(int neighbor\_ID[], int neighbor\_Dist[])}\\
+This function takes in an robot id value and the distance fromthat robot, it then
+\end{itemize}
+All the above functions can be found at the bottom inside the libkilobot.c file.
+
+
+
+\subsection{Matlab code}
+In this project Matlab 2015b has been used.
+There has been 3 major .m programs produced in this project. 
+\begin{itemize}
+\item $NetWorkControlSystems\_test.m$:This file shows how to solve some basic problems in swarm robotics; Solving the rendezvous problem is one of them. Also how to form basic constellations and make that constellation change direction, move around in a user input way and also follow a predefined path. This file is mostly for getting into swarm thinking, using ordinary vector programming in Matlab. Here only Matlab's own coordinate system is used.
+
+\item $ClassTest.m$: Here we take the next step and start looking at objectoriented programming with Matlab. This program solves a little more comlicated problems. First all agents are wandering around randomly untill they see some one else. When this happens they calculate the rendezvous point between all agents that see each other at that area. If there are several small groups created in the Matlab world, they do not take each other into account in this calculation. When a group of agents are close enough to each other they will start to wander in some predefined direction. Here there are room for future work. They should continue to search the environment for more agents. Three different end conditions could be implemented.
+\begin{itemize}
+\item The maximum number of agents are known and the seach continues untill all all agents belong in one consistens group.
+
+\item A search time counts down and resets for every new agents that are found, when search timer reaches zero. All search groups defines the world population as there own group. They can after this start to solve what ever task the human has given to them.
+\item Same as number two, but with an extra deadline that can not be reset. This would mean that the maximum time that the agents has can not be broken, this resembles a search and rescue setup.
+\end{itemize}
+
+\item $SelfOrganizingCoordinateSystemTest3\_6.m$: This is the most advanced .m file and it is crucial for the swarm behavior part of this project that it is finished. The purpose with this program is to construct a consistent coordinate system between all agents that can communicate with each other and measure distances. This is not fully implemented in a robust way. It is possible to get a consistent coordinate system in some special cases, but more work has to be done here.\\
+The purpose to have a local coordinate system that all agents can agree upon, is that it will be easier to solve tasks together if every one in the group knows were they are all the time, without the use of external coordinate systems as GPS.\\
+This self-organizing coordinate system is the first part of the S-DASH algorithm.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\subsection{S-DASH }
+This will be a short deskripten of the scalable - distributed self-assembly and self-healing algorithm (S-DASH), for more detaljs see \cite{Ruben}.\\
+The S-DASH consists of four main parts.\\
+\begin{itemize}
+\item First it develops a \textbf{consistent coordinate system} that all agents can agree up on. First a set of at least two seed agents must be chosen and then these seed agents will choose two more reference robots. The second part is to use trilateration, which in geometry is a way to determine relative and absolute points when the agents can measure distances. Now there will be at least two local coordinate systems, one for every seed agent. Next step is to merge all local coordinate systems and create a transitional coordinate system that all agents in the collective can relate to. This is implemented in the $SelfOrganizingCoordinateSystemTest3\_6.m$ file and all steps in this test file is well commented. How ever the simulation file needs to be reviewed, it does not have a robust behavior in the end for agents that do not sit in Matlab's orion.
+
+\item The second part is \textbf{DASH}, the inputs for this function are the desired shape of the collective, given as a picture or a pixel map(black and white, white pixels belong to the shape), desired scale of the shape, robot location in the self-organized coordinate system and messages from neighbors. It will then use the gradient map to decide how to move. It chooses what to do after calculating:
+\begin{equation}
+\theta_{gradient} = atan\frac{A}{B}
+\end{equation}
+Where gm is the gradient map and\\
+$A = gm(x_{index}, y_{index}+1) - gm(x_{index}, y_{index}-1)$\\
+$B =  gm(x_{index}+1, y_{index}) - gm(x_{index}-1, y_{index})$\\
+
+Then it has five modes: Gradient follow, trapped robot message, trapped robot moment, random moment and stop movement.
+Each pixel in the pixel map can be indexed by two numbers$(x,y)$, where y represent how many pixels there are above current pixel and x represent how many pixels that are to the left of this pixel.
+This will give the upper left corner$ (x,y) = (0,0)$.
+There are two constraints here.
+\begin{itemize}
+\item connected shape.
+\item All pixels on the outside border must be black.
+\end{itemize}
+
+Next we have the scale, $S_f$, defines in terms of robot radius, $R_{robot}$.
+IF the shape is a  square $3x3$ pixels. AND $S_f = 2.0$
+THEN each pixel will be $2*R_{robot}$ wide and  $2*R_{robot} $long, this means that the dimensions of the real shape will be  $6*R_{robot}$ wide and  $6*R_{robot}$ long.
+
+\item The third part is to determine the \textbf{scale} of the scape that is proportional to the number of agents currently in the collective.
+
+Every time step every robot updates it’s  $S_f $to the mean of it’s own and all neighbors. 
+After this the robot communicates this to all it’s neighbors.
+IF the scale is too big then all robots has to reduce there scale. This is done in three steps.
+\begin{itemize}
+\item A distributed mechanism to let all robots know that the seed position is unoccupied.
+\item A way to know how long time to wait until the seed position should have been taken.
+\item A mechanism to reduce the scale.
+\end{itemize}
+
+
+\textbf{Detecting unoccupied seed:}
+$T_{unoccupied}$ updates as following. $T_{unoccupied}$ is compared with all neighbors $T_{unoccupied}$.
+IF there are any neighbors value that is lower then its own value of $T_{unoccupied}$ THEN $T_{unoccupied} = neighbors value + 1$.
+IF no neighbors value are lower THEN increase own value with 1.
+IF the robot is located in the seed position THEN set $T_{unoccupied}$ value to zero and update all neighbors.
+
+Above pseudoAlgo will have the effect as a timer. If no robot is located at the seed position, then all robots will start to increase there $T_{unoccupied}$ value by one for every loop in the main controller.
+Eventually one robot will reach $T_{unoccupied_{max}}$ which will tell the robot that the scale is to big.
+
+The $T_{unoccupied_{max}}$ is calculated as followed.
+\begin{equation}
+T_{unoccupied_{max}} = \frac{S_{f} * L_{externalpath}} {V_{robot}*P_{move}}
+\end{equation}
+This means: The worst case of traveling  divided with the average moment speed.
+where,\\
+$S_f	= Current scale factor$\\
+$L_{external_path} =$\\ Max(The distance between the starting pixel outside the shape and all pixels on the border of the shape)\\
+$V_{robot} =$ Speed of the robot movement\\
+$P_{move}	 =$ The probability that the robot will move
+
+\textbf{Reducing the scale:}
+The scale reduction is initiated by the first robot to reach $T_{unoccupied_{max}}$ or go above it. NOW this robot will do two things:
+\begin{itemize}
+\item Set it’s own $T_{unoccupied}$ value to 0
+\item For $\frac{T_{unoccupied_{max}}}{2}$ cycles of the main control loop, do not use the ordinary scale update function, instead report to all neighbors the new lower value $S_{f_{new}}$. This will effect all robots $S_f$ value.
+
+The $S_{f_{new}}$ is calculated as following:
+\begin{equation}
+S_{f_{new}} = S_{f_{old}} * sqrt(1-(\frac{1}{NumPix}))
+\end{equation}
+where NumPix is the total number of pixels in the shape pixel map’s shape segment.
+\end{itemize}
+
+However after that the scale has been observed for a long time and it is not big enough, three things needs to take place, similar as when the scale is to big.
+\begin{itemize}
+\item A distributed mechanism to let all robots know that the external segment seed position is occupied.
+\item A way to now how long time to wait until the seed position should have be free.
+\item A mechanism to increase the scale a proper amount.
+\end{itemize}
+
+\textbf{Detecting occupied seed:}
+$T_{Occupied}$ this variable is updated every loop in the main controller, just as $T_{unoccupied}$. In every cycle the robot checks to see if it is in the external segments seed position. IF true, then $T_{Occupied} = T_{Occupied} +1$.
+IF the robot receives a message called ”$moved\_into\_shape\_message$” then it will put a zero in the $T_{Occupied}$ variable. IF $T_{Occupied}  < T_{Occupied_{max}}$ then it is time to increase the scale.
+The robot will also send out the $moved\_into\_shape\_message$.
+	
+\textbf{Wait time:}
+The definition for $T_{Occupied_{max}}$ is the same as the definition of $T_{unoccupied_{max}}$ except for the $L_{internalpath}$,
+which is defined as: Max(The distance between the starting pixel inside the shape and all pixels on the border of the shape)
+
+\textbf{Increasing the scale:}
+The robot that initiate the increase scale do two things:
+\begin{itemize}
+\item Send out the $moved\_into\_shape\_message$, to prevent other robots from further trying to increase the scale by resetting the $T_{Occupied}$ values.
+\item For $\frac{T_{Occupied}}{2}$ cycles of their main controller loop, they do not use the original update function(same as above) instead they send out a new larger scale value  $S_{f_{new}}$.
+$S_{f_{new}} = sqrt(S_{f_{old}}^2 + (Pi/NumPix))$.
+\end{itemize}
+
+\item The last and fourth part is to \textbf{choose a role} based on its location within the shape and with respect to time(partial-temporal differention)
+This is a distributed method to allow each robot to choose a role based on its location in the desired shape and time.
+The overall choice of all robots in the shape is called the partial-temporal role pattern. This pattern is given to each and every robot in the form of a pixel map or an image, called the partial-temporal role map.
+Inputs for this function are the spartial-temporal role map(or just a Spartal role map), desired scale and the robots location in the coordinate system. 
+The function shall do the folowing: All robots has either an Spartal role map(1) or Spartal-temporal role map(2).
+IF(1) THEN each entity in the map consists of just an integer value, which represents a role.
+\begin{table}[h]
+\caption{The spartial role map} \label{tab:numbersExample}
+\begin{center}
+\begin{tabular}{| l | l | l | l |}
+\hline
+1 & 1 & 1 & 1 \\ \hline
+1 & 2 & 2 & 1 \\ \hline
+1 & 2 & 2 & 1 \\ \hline
+1 & 1 & 1 & 1 \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+In the above example  there are to different roles, ”1” and ”2”. The outer part has role number ”1” and the inner robots will have role ”2”. This could represent different colors on the leds or other things.\\
+IF(2) THEN each entity in the map consist of a list of paired numbers. A timestamp and a role.
+\begin{table}[h]
+\caption{The spartial-temporal role map} \label{tab:numbersExample}
+\begin{center}
+\begin{tabular}{| l | l | l | l |}
+\hline
+(0,1) & (0,1) & (0,2) & (0,2) \\ 
+(1,1) & (1,1) & (1,1) & (1,1) \\ \hline
+(0,1) & (0,1) & (0,2) & (0,2) \\ 
+(1,2) & (1,2) & (1,2) & (1,2) \\ \hline
+(0,1) & (0,1) & (0,2) & (0,2) \\ 
+(1,1) & (1,1) & (1,1) & (1,1) \\ \hline
+(0,1) & (0,1) & (0,2) & (0,2) \\ 
+(1,2) & (1,2) & (1,2) & (1,2) \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\end{itemize}
+
+
+In the above example: At time = 0, The robots in the left halv of the square should choose role ”1”  and the robots on the right side will take on role ”2”. This will be the first () in each entity. The second () in each entity corresponds to the second timestep. 
+
+
+
+
+
+\subsection{Conclusions}
+The simulation environment for the self-organizing coordinate system took far more time to develop then expected.
+Things to note about the experimental design is that the test cases shall not just be to small which is common knowledge, but also the minimum size of the testcases had an hugh impact.
+\subsection{Future work}
+Finish the implementation of the S-DASH algorithm, both in Matlab and in c code.
+

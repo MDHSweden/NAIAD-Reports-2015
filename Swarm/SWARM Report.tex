@@ -1,0 +1,262 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thin Sectioned Essay
+% LaTeX Template
+% Version 1.0 (3/8/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original Author:
+% Nicolas Diaz (nsdiaz@uc.cl) with extensive modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a4paper, 10pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+
+\usepackage{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Required for accented characters
+\linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\makeatletter
+\renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{flushright} % Right align
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{50pt} % Some vertical space between the title and author name
+
+{\large\@author} % Author name
+\\\@date % Date
+
+\vspace{40pt} % Some vertical space between the author block and abstract
+\end{flushright}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{\textbf{Project SWARM report}\\ % Title
+Project course in robotics 2015-2016} % Subtitle
+
+\author{\textsc{The student project team} % Author
+\\{\textit{Malardalens University}}} % Institution
+
+\date{\today} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title section
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT AND KEYWORDS
+%----------------------------------------------------------------------------------------
+
+\section{Content-PL}
+\input{Requirements_1.tex}
+
+% needed in second column of first page if using \IEEEpubid
+%\IEEEpubidadjcol
+
+\section{Summery-PL}
+Summery text here.
+
+\section{Background and instroduction-PL}
+The Naiad project was starded the fall 2013 and different groups of master students has been working on it sence then. This fall a light communication system has been starded to be developed and a wifi solution has been tested inorder to remove the current ethernet solution. There are several things left to implement in all systems in the Naiad project. Also a second Naiad robot has been started to be developed. The hull has been bought from Lars Asplund but the body has not been assembled.
+
+This year the reseach in this project has taken a new direction. Multiagent behavior. A land based platform named kilobots has been invested in and the focus for the software team has been to investigat how to create coordinatesystems and patterns using the kilobots.
+
+\section{Goals-PL}
+For the Naiad platform the goals has been to build a second robot. Improve the power supply on the first robot. Go from ethernet cable to a wireless system for communication with the robot in surface mode. Also to develop two different underwater communication systems. One short range but fast with LED technology and one long range but more slow using sonar technology.
+\subsection{Milestones}
+Naiad
+\begin{itemize}
+  \item Current system up and running
+  \item Wireless communcation using standard router
+   \item Build new tail antenna
+  \item New power supply
+   \item Underwater light communication up and running
+    \item Side sonar up and running
+    \item Long range underwater communication up and running
+\end{itemize}
+
+Naiad sister
+\begin{itemize}
+\item Body
+\item Build interial for electronics
+\item Build all electronics
+\item Communication interface
+\item Light Communication between two robots
+\end{itemize}
+
+Wireless communication
+\begin{itemize}
+\item Specification
+\item Underwater test
+\item Tail Antenna complete
+\end{itemize}
+
+Light communication system
+\begin{itemize}
+\item Specification
+\item Land test, Prototype solution
+\item Underwater test, working solution
+\end{itemize}
+
+Swarm behavior
+\begin{itemize}
+\item 
+\item 
+\item 
+\end{itemize}
+
+\section{Requirements-PL}
+Naiad platform new power supply, ring design.% Kolla med Albin
+The wireless router shall be small enough to fit inside the current platform.
+The wireless router must be able to work in the current system without major changes to the power plant.
+The antenna for the wireless communication system shall resemble a stingray tail.
+The antenna shall be stiff.
+The antenna's length shall be 30 procent of the length of the Naiad platform.
+The toolplate shall be able to mount the side sonars developed by DeepVisionAB in Lindköping.
+The toolplate shall be build of the same material used on the current platform.
+The underwater light communication shall be able to work in pool water with a range of 100 m.
+The long range underwater communication system 
+
+
+
+\section{Limitations-PL}
+Because all the projects share the student resources this year, there has been a very limited amount of student working time set for this project, because there are two other projects in this course that has higher priorites.
+The underwater communication system is going to be developed outside this course.
+
+
+
+\section{System description-PL}
+
+\section{Planning-PL}
+The plan for the the Naiad platform this fall has been
+\begin{itemize}
+\item Current system knowledge
+\item Current system up and running
+\item Test: water leakproof
+\item Test: Old system dive
+\end{itemize}
+
+The plan for development of the wireless communication
+\begin{itemize}
+\item Specification for wireless communication
+\item Develop wireless communication
+\Item Test: Wireless communication system
+\item Verification and validation on the improved Naiad
+\item  Build tail antenna
+\end{itemize}
+
+The plan for side sonar overlapping with stereovision
+\begin{itemize}
+\item Specification of sonar element for overlapping image with stereo vision
+\item Order hardware for sonar element
+\item Design
+\item Build sonar holder for Naiad
+\item Implemention: Software overlapping between sonar and Gimme 2
+\item Test: Sonar and Camera in a big pool
+\item Verification and validation
+\end{itemize}
+
+The plan for Naiads sister
+\begin{itemize}
+\item Specification on Naiads sister
+\item Design
+\Item Buy hull and motors
+\item Build interial for the electronics
+\item Build the electronics
+\Item Implement new software
+\item Integrate subsystems
+\item Test: Water leakage proof
+\item Test: Naiads sister dive test
+\end{itemize}
+
+The plan for the light communication system
+\begin{itemize}
+\item Specification light communication
+\item Design light communication
+\Item Develop light communication system
+\item Test: Blink light communication
+\item Verification and validation
+\end{itemize}
+
+The plan for the long range communication system
+\begin{itemize}
+\item Specification for sonar communication
+\item Design sonar communication system
+\Item Develop sonar communication
+\item Test: Sonar communication
+\item Verification and validation
+\end{itemize}
+
+The plan for the landbased platform
+\begin{itemize}
+\item Read state of the art
+\item Specification on the landbased robot platform
+\Item Search for landbased robot platforms
+\item Order landbased robot platform
+\item Hands on sytem knowledge on the purchased system
+\end{itemize}
+
+The plan for the swarm behavior
+\begin{itemize}
+\item Read state of the art
+\item Design: Information repressentation
+\item Design: Path Planning
+\item Develop algoriths for swar behavior
+\item Development of simulator
+\item Implementation on landbased platforms(Kilobots)
+\item Test on AUV scenarios
+\item Verification and validation for AUV scenario 1
+\item Verification and validation for AUV scenario 2
+\item Test on landbased platforms()
+\item Verification and validation on landbased platform
+\end{itemize}
+
+The plan for presentation
+\begin{itemize}
+\item Result of landbased swarm system
+\item simulation result for AUV scenario 1 and 2
+\item Result on the light communication system
+\end{itemize}
+
+Chrismas holiday
+Report writing and time for completion
+
+
+
+\section{Naiad - Jakob, Ragnar, Albin}
+\section{Naiad syster - Ragnar, Albin}
+\section{Wireless communication - Jakob, Albin}
+\section{Underwater Light communication - Jakob, Albin}
+\section{Sonar communication - Albin}
+\section{Swarm behavior - Peter, Jonathan}
+\section{Landbased platform - Peter, Jonathan}
+
+
+\section{Results-PL}
+\section{Future work-PL}
+\section{Appendix}
+\subsection{Contact list-PL}
+%----------------------------------------------------------------------------------------
+
+\end{document} 

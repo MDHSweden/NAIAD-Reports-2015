@@ -1,0 +1,44 @@
+\section{ CAN-messages}
+The CAN-messages shown below are distributed by the high-level CPU.
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \textbf{Message name} & \textbf{ID}    & \textbf{Data bytes} & \textbf{Source} & \textbf{Periodicity(ms)} \\ \hline
+    Communication Test Response & 16    & 8     & Main CPU & 1920 \\ \hline
+    Start Controllers & 18    & 1     & Main CPU & Aperiodic \\ \hline
+    Pressure Sensor Value & 51    & 2     & Sensor Board & 240 \\ \hline
+    Depth Set Point & 52    & 2     & Main CPU & Aperiodic \\ \hline
+    Update Depth Control Constants & 54    & 2     & Main CPU & Aperiodic \\ \hline
+    Update Pitch Control Constants & 58    & 2     & Main CPU & Aperiodic \\ \hline
+    Update Roll Control Constants & 56    & 2     & Main CPU & Aperiodic \\ \hline
+    Pitch, Roll and Yaw Values & 71    & 6     & Sensor Board & 240 \\ \hline
+    Yaw Set Point & 74    & 5     & Main CPU & Aperiodic \\ \hline
+    Update Yaw Control Constans & 76    & 2     & Main CPU & Aperiodic \\ \hline
+    Movement Set Point & 42    & 3     & Main CPU & Aperiodic \\ \hline
+    Torpedo Activation & 20    & 1     & Main CPU & Aperiodic \\ \hline
+    Gripper Activation & 22    & 1     & Main CPU & Aperiodic \\ \hline
+    Marker Activation & 24    & 1     & Main CPU & Aperiodic \\ \hline
+    Passive Sonar & 33    & 2     & Sonar Board & 240 \\ \hline
+    Active Sonar & 35    & 2     & Sonar Board & 240 \\ \hline
+    ShutdownMainCpu & 13    & 1     & Powerboard & Aperiodic \\ \hline
+    ShutdownMainCpu Response & 14    & 1     & Main CPU & Aperiodic \\ \hline
+    Kill switch & 23    & 1     & Powerboard & Aperiodic \\ \hline
+    Mission Switch & 25    & 1     & Powerboard & Aperiodic \\ \hline
+    \end{tabular}
+\end{center}
+
+The CAN-messages shown below are distributed by the low-level micro controllers.
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+    \hline
+   \textbf{Message name} & \textbf{ID}    & \textbf{Data bytes} & \textbf{Source} & \textbf{Periodicity(ms)} \\ \hline
+    Speed for motor 1 and 2 & 11    & 3     & Motor Controller & 240 \\ \hline
+    Speed for motor 3 and 4 & 31    & 3     & Motor Controller & 240 \\ \hline
+    Speed for motor 5 and 6 & 41    & 3     & Motor Controller & 240 \\ \hline
+    Communication Test Request & 15    & 8     & Motor Controller & 1920 \\ \hline
+    Reply Depth Control constants & 55    & 2     & Motor Controller & 20 000 \\ \hline
+    Reply Roll Control Constants & 57    & 2     & Motor Controller & 20 000 \\ \hline
+    Reply Yaw Control Constants & 75    & 2     & Motor Controller & 20 000 \\ \hline
+    \end{tabular}
+\end{center}
+

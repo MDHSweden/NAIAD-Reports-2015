@@ -1,0 +1,111 @@
+\newpage
+\section{Results}
+The result of this project is a robot that is able to operate, autonomously, under water. The robot has a vision system and a sensor to determine how deep in the water it is. It is also able to execute some basic missions, such as move to a certain position or hitting a buoy.  
+
+The list of requirements as it was given from the client is found in \ref{requirements}. During the time of the project, some items were taken from the list of requirements for different reasons, these are marked with red in the list below.  
+
+\begin{enumerate}
+\label{resultlist}
+\item Functional requirements
+\begin{enumerate}
+\item {\color{green}Done: The robot should be built using a mono-hull.}
+\item {\color{green}Done: The hull should be easy to open and close.}
+\item {\color{green}Done: The cabling should be very efficient and easy to manage.}
+\item {\color{green}Done: A communication cable for remote operation should use either Ethernet or an optical fibre.}
+\item The robot should be able to operate using external power (preferable through an umbilical including optical fibre/ethernet).
+\item The umbilical ends in a box that connects to the robot. 
+\item {\color{green}Done: There should be a Kill Switch.}
+\item {\color{green}Done: There should be a Mission Switch.}
+\item {\color{green}Done: There should be indicators like LEDs and/or LCD-display.}
+\item Actuators
+\begin{enumerate}
+\item {\color{red} Every actuator has its own micro-controller.}
+\item {\color{green}Done: All actuators should operate over the CAN-bus.}
+\item {\color{green}Done: The motors should preferable be BLDC, but ordinary DC-motors can be used.}
+\item {\color{green}Done: Make new own BLDC-driver. One Controller two motors. Remark; this was not done, however the old drivers are now working properly}
+\item There should be two droppable markers.
+\item There should be two unpowered torpedoes.
+\item There should be a simple manipulator that can grip an object and release the object.
+\item An LED-light for cameras.
+\end{enumerate}
+\item Sensors
+\begin{enumerate}
+\item {\color{green}Done: All low rate sensors should operate over the CAN-bus.}
+\item {\color{green}Done: High speed sensors should operate over ethernet (GIMME-2).}
+\item {\color{red} Every sensor has its own compute power.}
+\item {\color{green}Done: There should be a pressure sensor.}
+\item There should be a sensor for water temperature.
+\item {\color{red} There should be a sensor for salinity in the water.}
+\item There should be a speed logger (measures the speed in two directions.
+\item {\color{green}Done: There should be an 9-DOF IMU.}
+\item There should be an independent gyroscope for the yaw angle.
+\item There should be an active two dimensional sonar.
+\item There should be a passive two dimensional broadband sonar (20kHz  - 40kHz).
+\item {\color{red} There might be a system for finding direction and distance of cooperative robots based on ultrasonic sensors.}
+\item {\color{green}Done: There should be two stereo camera systems or one system that fast and accurate can tilt (Two GIMME-2).}
+\item The fibre optical gyro shall be installed.
+\end{enumerate}
+\item Communication
+\begin{enumerate}
+\item {\color{green}Done: The communication system between nodes should use the CAN-bus.}
+\item {\color{green}Done: The project should study Space Plug and Play Avionics (SPA) system and implement part of it.}
+\item {\color{red} There should be a communication mechanism for robot-robot communication (in case of cooperative robots).}
+\end{enumerate}
+\item Software
+\begin{enumerate}
+\item The firmware (Software for the micro controllers) should be downloaded via the CAN-bus.
+\item The firmware should be handled by a configuration manager.
+\item {\color{green}Done: Compare the latest Vasa-code and Naiad-code, extract the best parts. Document the arguments.}
+\end{enumerate}
+\item {\color{green}Done: There should be a simulator for the mechanical and electronic parts.}
+\item {\color{green}Done: There should be a simulator for the software system.}
+\begin{enumerate}
+\item {\color{red} The simulator should be able to handle more than one instance of the robot.}
+\item {\color{red} The simulator should handle inter robot communication.} 
+\item {\color{green}Done: The GUI of the simulator should be used to monitor the actual robot in operation.}
+\end{enumerate}
+\end{enumerate}
+\item Missions for Robosub 2014 that shall be implemented.
+\begin{enumerate}
+\item Pinger: Go and bring things on the bottom and move.
+\item Gate: Go through gate with visual servoing. 
+\item {\color{green}Done: Bouy: Identify and hit.}
+\item Bin: Identify and drop marker.
+\item Torpedo: Find opening and fire torpedo.
+\end{enumerate}
+\item Nonfunctional requirements
+\begin{enumerate}
+\item {\color{red} The programming language should be Ada and using the Ravenscar profile.}
+\item {\color{green}Done: The software should be layered, with hardware support as the first (lowest) layer.} 
+\item {\color{green}Done: The software should be based on principles for component based software engineering.} 
+\item {\color{green}Done: The documentation should be written using Latex.}
+\item {\color{green}Done: The preferred computer in the system is the GIMME-2.}
+\item {\color{green}Done: The batteries should be easy to change.}
+\item {\color{green}Done: Make a complete test plan.}
+\end{enumerate}
+\end{enumerate}
+
+Most of the items not listed as done are at least started, many of them are almost finished but had to be left that way due to lack of time and\slash or funds. The different items marked in red were removed for different reasons. The requirement that every sensor should have its own compute power was removed, since that would require an extensive amount of extra cards inside Naiad. This takes up additional space and also creates heat inside the hull. All requirements that were related to inter robot communication were removed in agreement with the client since creating more than one instance of Naiad would not be possible during the time of the project. Furthermore, the requirement for writing all code in Ada was removed since it was not possible to run Ada on the GIMME-2 board. The vision programming was done in C instead. However, Ada has been used for all on-robot communication except on the GIMME-2 boards. Ravenscar was also taken in consideration when this was possible. 
+\subsection{Mechanics results}
+The previous group had developed and constructed the main hull. Since the main hull was complete it was mostly peripherals that needed to be created this year. For example the wings. The wings has been 3D-printed with attachments, such as LEDs to show state in the program as well as mountings hydrophones. 
+
+Also the entire tool plate needed to be redesigned. The tool plate was divided in to a front and back tool plate and are designed to be changeable in case other functionality was desired. The front tool plate has been constructed, it contains most of the equipment for the RoboSub competition. For example torpedoes and markers. The side scan sonar is also mounted in the front tool-plate. The back is at the moment an empty support structure where tools can be attached. The simple manipulator has not been finalised since the project ran out of time. 
+
+\subsection{Electronics results}
+The electronics group has continued the work from the previous year and added more functionality to the pre-existing cards. This added functionality have for the most part been by add-on cards to the exiting cards. A redesign of the CAN-card has also been done in order to get more out of the MCU itself. This new card can not at present time completely replace the cards developed last year but it is the belief of the group that this can be done with another redesign.  
+
+Some of the functionalities that has been added is hydrophones to be able to hear a pinger used in the RoboSub competition. A speed logger to help determine the position in the water. The previous group worked on a card to support the FOG to help determine yaw position that this group seems finalised but more testing is required. RGB-LEDs have been added to the wings to communicate with the surface. A remote control to navigate through menus on the display when Naiad is on the surface has been constructed as well as a card to control the solenoids in the tool plate, these have also not been tested however. Also a side scan sonar has been built in to in to the system.  
+
+\subsection{Software results}
+Most of the software and protocols running in Naiad have been tested extensively. By observation over time or by trying to break them. If an essential program failed, it has been prioritized until working as desired. By focusing on robustness, a good base for future work has been built.
+
+A lot of work has been put in to get a node based system running. With that working much time can be saved for testing new sub-programs since it is easy to add a new node. It also simplifies diagnostics to see what node is alive to take appropriate actions if a node goes down. This also helps for testing the robustness of that program. 
+
+The PID-controller and path-planner have been tested both in simulation and in real life. The tests have been successful but some tuning is sting required to get optimal performance.
+
+The simulator has been tested with orientation and translation with correct results.
+The graphical user interface is yet to be implemented for sending missions to the robot. Tests for sending simulated missions and messages has been done successfully. Implementation in Naiad for receiving missions and messages from the GUI is not implemented.
+
+The vision system has been tested with acceptable result for the purpose, a problem have been the lenses narrow visual angle causing it to easy loose sight of objects. Also the frequency of the program needs to be increased to work efficient enough.
+
+Most of the CAN-nodes works without any problems. The most common problems seems to be caused by SPI or UART, the time needed to firmly fix the firmware for these protocols has not been prioritized due to time issues and that the impact would not be essential.

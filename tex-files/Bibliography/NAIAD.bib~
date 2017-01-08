@@ -1,0 +1,235 @@
+% RoboSub rules
+@misc{robosubrules,
+      author = "AUVSI Foundation",
+      title = "{O}fficial {R}ules and {M}ission {A}{U}{V}{S}{I} \& {O}{N}{R}'s 17$^{\textnormal{th}}$ {A}nnual {R}obo{S}ub Competition",
+      note = "[Online; accessed 21-November-2014]",
+      year = {2014},
+      howpublished={\url{http://auv.mcgillrobotics.com/wp-content/uploads/2014/05/RoboSub_Mission_Final_2014.pdf}}
+}
+@misc{naiadwiki, 
+	author = "Unknown", 
+	title = "Naiad", 
+	note = "[Online; accessed 4-December-2014]", 
+	year = {2014}, 
+	howpublished={\url{http://en.wikipedia.org/wiki/Naiad}}
+}
+@misc{kalman_filter, 
+	author = "Unknown", 
+	title = "Kalman Filter Applications.Subject MI63:Kalman Filter Tank Filling", 
+	%note = "[Online; accessed 4-December-2014]", 
+	%year = {2014}, 
+	%howpublished={\url{http://en.wikipedia.org/wiki/Naiad}}
+}
+@misc{TKJ, 
+	author = "Unknown", 
+	title = "A practical approach to Kalman filter and how to implement it", 
+	note = "[Online; accessed 14-November-2014]", 
+	year = {2014}, 
+	howpublished={\url{http://blog.tkjelectronics.dk/2012/09/a-practical-approach-to-kalman-filter-and-how-to-implement-it/}}
+}
+@misc{Greg_Czerniaks_Website, 
+	author = "Greg Czerniak", 
+	title = "When Can Kalman Filters Help?", 
+	note = "[Online; accessed 10-November-2014]", 
+	year = {2014}, 
+	howpublished={\url{http://greg.czerniak.info/guides/kalman1/}}
+}
+@misc{change_parameter, 
+	author = "Hisham Alrawashdeh, Johnson A sumadu", 
+	title = "The Kalman Filter Performance for Dynamic Change in System Parameters.", 
+	%note = "[Online; accessed 10-November-2014]", 
+	year = {December,2013}, 
+	howpublished={Vol. 3, No. 6, December 2013,(IJECE)}
+}
+@misc{kalman_filter_dummies, 
+	author = "Unknown", 
+	title = "Kalman Filter For Dummies", 
+	note = "[Online; accessed 20-November-2014]", 
+	year = {2014}, 
+	howpublished={\url{http://bilgin.esme.org/BitsBytes/KalmanFilterforDummies.aspx}}
+}
+@misc{parameter, 
+	author = "Unknown", 
+	title = "What are all those matrices for the Kalman filter? Part I: x, F, P, H, R, u", 
+	note = "[Online; accessed 20-November-2014]", 
+	year = {2014}, 
+	howpublished={\url{http://forums.udacity.com/questions/1010153/what-are-all-those-matrices-for-the-kalman-filter-part-i-x-f-p-h-r-u}}
+}
+@misc{thrusters, 
+	author = "Crustcrawler Inc", 
+	title = "400HFS-L Hi-Flow Thruster", 
+	note = "[Online; accessed 5-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{http://www.crustcrawler.com/products/urov2/docs/HiFlow_400HFS-L_Thruster_Data_Sheet.pdf}}
+}
+@misc{motor_drivers, 
+	author = "Castlecreations", 
+	title = "Phoenix Ice2 HV", 
+	note = "[Online; accessed 5-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{http://www.castlecreations.com/products/phoenix-ice2-hv.html}}
+}
+@misc{JTAGICEMKII, 
+	title = "JTAGICE MKII", 
+	note = "[Online; accessed 5-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{http://www.atmel.com/tools/AVRJTAGICEMKII.aspx}}
+}
+@misc{JTAGICE3, 
+	title = "JTAGICE3", 
+	note = "[Online; accessed 5-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{http://www.atmel.com/tools/JTAGICE3.aspx}}
+}
+@misc{Pressure_sensor, 
+	title = "Pressure sensor", 
+	note = "[Online; accessed 7-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{http://www.sensorsone.com/wp-content/uploads/2013/10/IMCL.pdf}}
+}
+@misc{VN-100, 
+	title = "VN-100", 
+	note = "[Online; accessed 7-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{http://www.vectornav.com/products/vn100-rugged/documentation}}
+}
+@misc{side_scan_sonar, 
+	title = "Deep vision: side scan sonar", 
+	note = "[Online; accessed 5-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{deepvision.se/products/side-scan-sonars/}}
+}
+@misc{link_to_download, 
+	title = "GNAT GPS", 
+	note = "[Online; accessed 5-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{http://libre.adacore.com/download/configurations#}}
+}
+@misc{at90can128, 
+	title = "AT90CAN128", 
+	note = "[Online; accessed 5-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{http://www.atmel.com/Images/doc7679.pdf}}
+}
+@misc{Ralf_II, 
+	title = "Ralf II", 
+	note = "[Online; accessed 5-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{http://www.idt.mdh.se/rc/page_id1/ralf-ii}}
+}
+@misc{JSON, 
+	title = "JSON", 
+	note = "[Online; accessed 5-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{http://www.json.org/}}
+}
+@misc{spnp, 
+	title = "Space Plug And Play", 
+	note = "[Online; accessed 5-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{http://www.kirtland.af.mil/shared/media/document/AFD-111103-031.pdf}}
+}
+@misc{BBB, 
+	title = "BeagleBone Black", 
+	note = "[Online; accessed 5-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{http://beagleboard.org/BLACK}}
+}
+@misc{Ravenscar, 
+	title = "Ravenscar profile", 
+	note = "[Online; accessed 5-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{http://docs.adacore.com/sparkdocs-docs/Examiner_Ravenscar.htm}}
+}
+@misc{Atmel_Studio, 
+	title = "Atmel Studio 6", 
+	note = "[Online; accessed 8-January-2015]", 
+	year = {2015}, 
+	howpublished={\url{http://www.atmel.com/microsite/atmel_studio6/}}
+}
+@misc{mercury_SR,
+	title="Tusentals tunnor med kvicksilver kan finnas i Östersjön", 
+	note = "[Online; accessed 7-January-2015, published 25-December-2014]", 
+	howpublished=\url{http://sverigesradio.se/sida/artikel.aspx?programid=94&artikel=6053508}}
+	}
+@misc{trello, 
+	title="Trello", 
+	note = "[Web system; accessed 7-January-2015]", 
+	howpublished={\url{http://trello.com}}
+	}
+@misc{dropbox, 
+	title="Dropbox", 
+	note = "[Cloud service; accessed 7-January-2015]", 
+	howpublished={\url{http://dropbox.com}}
+	}
+@misc{Image_Enhancement, 
+	title="Image Enhancement", 
+	note = "[Online; accessed 15-November-2014]", 
+	howpublished={\url{http://auv.dce.edu/software.htm}}
+	}
+@misc{Red_boost_Method, 
+	title="Red boost Method", 
+	note = "[Online; accessed 08-November-2014]", 
+	howpublished={\url{https://marcosnietoblog.wordpress.com-/2011/11/23/simple-highlighting-rgb-colors-with-opencv/}}
+	}
+@misc{Histogram_Method, 
+	title="Histogram and Backprojection", 
+	note = "[Online; accessed 16-November-2014]", 
+	howpublished={\url{http://www.robindavid.fr/opencv-tutorial/chapter4-histogram-and-backprojection.html/}}
+	}
+@misc{Histogram_Method_in_opencv, 
+	title="Histogram and Backprojection in opencv", 
+	note = "[Online; accessed 18-November-2014]", 
+	howpublished={\url{http://docs.opencv.org/doc/tutorials/imgproc-/histograms/back_projection/back_projection.html/}}
+	}
+@misc{Stereo_Camera, 
+	title="Stereo Camera", 
+	note = "[Online; accessed 02-November-2014]", 
+	howpublished={\url{http://ieeexplore.ieee.org/stamp/-stamp.jsp?arnumber=6271270/}}
+	}
+@misc{Find_distance, 
+	title="Find distance", 
+	note = "[Online; accessed 26-October-2014]", 
+	howpublished={\url{http://warse.org/pdfs/2013/icctesp02.pdf/}}
+	}
+@misc{SURF_Speed, 
+	title="SURF Speed", 
+	note = "[Online; accessed 02-December-2014]", 
+	howpublished={\url{ http://computer-vision-talks.com/articles/2011-01-04-comparison-of-the-opencv-feature-detection-algorithms//}}
+	}
+@misc{SURF, 
+	title="SURF", 
+	note = "[Online; accessed 29-November-2014]", 
+	howpublished={\url{ http://docs.opencv.org/trunk/-doc/py_tutorials/py_feature2d/-py_surf_intro/py_surf_intro.html/}}
+	}
+@misc{Haar_Classification, 
+	title="Haar Classification", 
+	note = "[Online; accessed 01-December-2014]", 
+	howpublished={\url{http://docs.opencv.org/modules/objdetect/-doc/cascade_classification.html/}}
+	}
+@misc{Haar_Cascade_Training, 
+	title="Haar Cascade Training", 
+	note = "[Online; accessed 02-December-2014]", 
+	howpublished={\url{http://opencvuser.blogspot.be/2011/08/creating-haar-cascade-classifier-aka.html/}}
+	}
+@misc{Opencv_Haar_Training, 
+	title="Opencv Haar Training", 
+	note = "[Online; accessed 04-December-2014]", 
+	howpublished={\url{http://www.tectute.com/2011/06/opencv-haartraining.html/}}
+	}
+@misc{torp,
+	title="HYDRODYNAMIC DESIGN CRITERIA FOR ADEQUATE TORPEDO STABILITY AND RESPONSE", 
+	note = "[Online; accessed 07-January-2015]",
+	howpublished={\url{http://www.dtic.mil/dtic/tr/fulltext/u2/215012.pdf}}
+	}
+@misc{ftpplastic,
+	title="Advanced Materials RenShape BM 5173"
+	note = "[Online; accessed 09-January-2015]",
+	howpublished={\url{http://www.combinatorics.net/weblib/a.8/a8.html}​}
+	}
+@misc{armhf,
+	title="Prepackaged Ubuntu for ARMhf"
+	note = "[Online; accessed 12-January-2015]",
+	howpublished={\url{http://www.armhf.com/}​}
+	}
+

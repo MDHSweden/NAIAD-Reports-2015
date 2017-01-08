@@ -1,0 +1,23 @@
+
+
+\section{Wireless Communication}
+\label{sec:WirelessCommunication}
+
+
+\subsection{The need for the WiFi module(Sudhangathan Bankarusamy)}
+The cables used for the NAIAD AUV had limiting issues such as the range, drag due to the cable running through water, which also adds up energy expenditure. Moreover the cables were an alternative to the limiting under water wireless technology issues. 
+The Wi-Fi router is a starting point for trying various wireless technologies. 
+\subsection{Network configuration}
+
+
+Configuration without wireless router was a simple star network where a gigabit switch is used and all devices can connect to it using a LAN cable.
+In the configuration with the Wi-Fi device(an ASUS WL-330n) is used in 'access-point' mode. This access point is used as a gateway between wired and wireless devices. The DHCP range in it's configuration page is set to 192.168.1.3 to 192.168.1.99.\\
+The IP address of BBB remains as 192.168.1.1 and that of the access-point is set to 192.168.1.2.
+
+\subsection{Behaviour and the issue}
+The router performed well as expected, but only as long as the NAIAD AUV is not under the water surface. As the Wi-Fi signal deteriorates heavily through water, the connection is immediately dropped when the AUV is submerged in water.
+
+
+\subsection{Future work}
+\textbf{Implement OpenVLC} - OpenVLC is an embedded framework for visible light communication. It has the complete software stack, from MAC to application layer libraries. OpenVLC can run in Linux on BeagleBoard. After setting up OpenVLC, an interface VLC0 is created through which we can send/receive ethernet data. The physical media is light through the air. The prototype setup is further discussed in Underwater Light Communication section.\\
+\textbf{SONAR} - Sonar is the most used technology for under water communication. It has been shown to perform well for long distance under water communication.\\

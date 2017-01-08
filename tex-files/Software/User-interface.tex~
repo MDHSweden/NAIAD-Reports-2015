@@ -1,0 +1,99 @@
+\subsection{User Interface}	
+	\subsubsection{Mission control interface} %Wenkai
+	\subsubsection{Simulation} %Joakim
+	\subsubsection*{Input}
+		\noindent
+		The simulation node can be set in two different modes.
+		\begin{itemize}
+  			\item Simulation mode
+  			\item IMU mode
+		\end{itemize}
+	\subsubsection*{Simulation mode}
+		\noindent
+		In simulation mode a virtual simulated representation of the Naiad robot is run with simulated sensors and actuators. The simulation allows you to be connected directly to the PID controller through TCP sockets, sending equal data as the real sensor node would have done if the robot was running a real task and receiving the real motor values that the PID controller would send to the real robot. These motor values are turned into estimated forces that is shown as dynamic lines coming from the different motor positions to give a good visualization of the forces that is acting on the robot.
+		
+		The calculations done in the simulation is based on the physical entities of the robot in order to get as accurate estimations of the forces that are acting on the robot as possible.
+		
+		By converting the motor values from the PID controller into estimated forces its possible to use these forces in the Newtonian equations to get an estimation of the translation of the robot and motion of inertia equations to estimate the orientation of the robot.
+		
+		Based on Newtons second law of motion the translational and orientational acceleration can be determined by the formulas below.
+		
+		\begin{center}
+		\[F=m*a\]
+		\\
+		\caption{Base equation to get the linear motion}
+		
+		\[\tau =I\alpha\]
+		\\
+		\caption{Base equation to get the rotational motion}
+		\end{center}
+		
+
+
+\begin{center}
+\[\left(
+\begin{array}{cccccc}
+0.866025 & 0.5 & 0.0 & 0.0 & 0.0 & 0.28\\ 
+0.0 & 1.0 & 0.0 & 0.0 & 0.0 & 0.22\\ 
+0.866025 & -0.5 & 0.0 & 0.0 & 0.0 & -0.28\\ 
+0.0 & 0.0 & 1.0 & 0.355 & 0.230 & 0.0\\ 
+0.0 & 0.0 & 1.0 & -0.355 & 0.230 & 0.0\\ 
+0.0 & 0.0 & 1.0 & 0.0 & -0.355 & 0.0
+\end{array}
+\right)\]
+\\
+\caption{Thruster configuration matrix}
+\label{simforward}
+\end{center}
+
+Combined with the Newtonian equations a thruster configuration matrix were used that is based on the distances and angles of each motor relative to Naiads center of gravity (COG) that makes the motion calculations less computationally heavy and easier to edit.
+Each row in the thruster configuration matrix represent corresponding motors motion components. The first three columns represent the X, Y and Z translational component and the last three columns represents the Roll, Pitch and Yaw rotational components.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=80mm]{./Images/Software/simforward.png}
+\\
+\caption{Visual representation of Naiad and forces while running in simulation mode}
+\end{center}
+\end{figure}
+
+To make an accurate estimation of the time varying local coordinate frame that the robot would be in after the forces have acted on the body a rotation matrix is determined by the following formulas [REFERENS TILL BOK Peter Corke - Robotics, Vision and Control, sida 51-52].
+
+\begin{center}
+\[R^{'}(t)=S(\omega)R(t)\]
+and,
+\[R(t+\delta _{t})\approx \delta _{t}R^{'}+R(t)\]
+which can be combined to,
+\[R(t+\delta _{t})\approx \delta _{t}S(\omega )R(t)+R(t)\]
+\end{center}
+
+Where S is a skew-symmetric matrix that contains the angular velocities that is integrated from the angular accelerations determined by the Newtonian equations.
+		
+	\subsubsection*{IMU mode}
+In IMU mode the simulator can be set into a passive mode that shows a virtual visual representation of the estimated position and orientation that the system in real time has estimated.
+No calculations is needed in this mode more than rotating the virtual robot in the right order.
+
+
+\subsection{BGW} % Hampus
+TCP communication
+
+The TCP communication is based on a server – client structure. The server will act as a central node and be a gateway to all of the other nodes. This makes it simple to decide where messages should be sent as it can just be specified in the messages itself, not requiring that the client is not directly connected with an other node. A drawback is that all the messages has to be sent twice, effectively doubling the number of messages. This also means that each client only need one connection open which is to the server. All but the initial communication is based on JavaScript Object Notation (JSON). So all messages contains variables with variable names expressed as a string. This allows a simple and compressed way to send data structure over Ethernet between programs written in different languages. A drawback is that variable names in the structure have to be predefined in some languages making it less dynamic. 
+
+Server
+
+To initiate a full connection to the server, a client have to first connect to a predefined port that is the same for all clients. When a clients connect on that port, the server expects a message containing a string of three characters. The string is important as the server will use that as the reference name for that connection and pass all messages that targets that name to that connection. After the initial string is received, it will first check if that name already have connected in which case it will do nothing but drop the current connection. If it a new connection, the server will connect to an internal thread and pass the name on. The server has a predefined number of threads that will be ready to handle connections. When a thread receives a name, it will open a server connection and wait on a port that is related to the name itself. The port number is calculated by using the each letters as a number in base 26. It makes the possible port range go from 0 (aaa) to 17576 (zzz), depending on the name. When the client connects to the new connection, the initial set-up connection is done. A thread that is now handling a connection will sit and wait for an incoming message of the size 256 bytes. This is done to simplify and speed up the handling of messages as the alternative is to either read every single byte to check for termination sign or to always start a message by sending a single integer that will tell the size of the following message. In the message itself, there should be a JSON variable called “target” containing a three character long string with the name. This will tell the server where it should send the message. If the variable does not exist or if the target name have not connected yet, the message will be thrown away. 
+
+After a initial connection is established at least once, there is no requirement to reinitialize the connection if the connection would drop as the server connection will reset on that port, but it will also not do any harm. This also means that a specific thread will never change it's port after it has been set. Because the server is running on a Linux operating system, it is configured to use the keepalive setting on the TCP connection which will probe to see if the connection have been physically disconnected. The keepalive timer is depended on a setting in the operating system, the default time before checking is 7200 seconds. The current timer is set to detect a broken physical connection after around 3 seconds. Other connection issues can trigger a detection of a client drop much faster. It does however not have any timeout settings enabled, so it will never drop the client by itself. The maximum number of  clients is currently 20. The server will never be busy waiting as when it waits for a connection or when it is waiting for a message, it will sleep until it is woken by an interrupt from the operating system due to activity on the Ethernet. This will only happen if the buffer is filled, which is if it receives 256 bytes. The server does also support the ability to mirror or/and disable traffic to nodes. All that is required is to set the server node as the message target, set a variable name to ethid 2 or 3 respectively and send boolean with a variable names of the target node where the traffic should be manipulated.
+
+Because the server is hosting server connections, it is required to run the server node with higher privileges, for example by using sudo in Linux.
+
+Client
+
+As the client are only supposed to be connected to the server node, they only need one connection. To make a successful connection the client should first connect to port 854. This connection is just to send a short message to the server, telling the name of the client. The name is a three character long string and it should be the same three characters as what other clients are using when they want to send a message to the this client. When the message is sent, the server will open a new server connection on a port that is based on the clients name. This is the connection where the client can now connect and where it can communicate with other clients. There will be a short delay before the server have successfully configured the new connection so if the client is trying to connect too soon after the initial message, it will fail and the client will have to retry to connect. The port number is calculated by using the each letters as a number in base 26. It makes the possible port range go from 0 (aaa) to 17576 (zzz). A list of current name and the corresponding ports can see in “port.txt”. All messages sent should always at least contain the two variables target and a sender. The variable target is a three character long string that should correspond to the name of the node which should receive the message and sender similar but it should be the name of the client that is sending the message instead. Another useful variable tags that is used are ethid, which tells the receiver what type of message it is. Another important thing the client has to consider is that all message should always be exactly 256 bytes. This is because the server will only react when its buffer is full, which is when it receives 256 bytes on a connection. The safest way to fill a message is by padding the message with spaces (ASCII value 32). When a client is waiting to receive a message, it should also expect a message size of 256 bytes. The server will never drop the connection intentionally. If the connection is broken, it will be because an issue with the server, like a crash or it can mean that the physical connection is broken. 
+
+All of the procedures above can be handled by a client library called “tcp_client” that is written in ADA. This library will only be able to handle one connection and it is done by a separate thread that is running as soon as the library is included. As soon as the initialization procedure is called, it will connect properly and allow the client to send and receive messages from anywhere in the program. This will also pad messages automatically and it will clean up received messages. The thread that handles the connection will also automatically try to reconnect to the server if the connection is lost.
+
+
+
+\subsubsection{INS} % Hampus
+\noindent The main purpose of the INS card is to get the current orientation of NAIAD. This is done thanks to an IMU (vn 100) [http://www.vectornav.com/docs/default-source/documentation/vn-100-documentation/UM001.pdf?sfvrsn=10] and a FOG. The IMU is communicating with UART and it can be configuration to give a variance of data. The currently outputting orientation in X, Y and Z axis and the true body acceleration in X, Y and Z. The output data of the IMU is sent as a string of characters containing both header information and the data itself. The INS card removes all of the header information by extracting specific sections of the string and converting them to float values. The size of the float values is a lot smaller compared to the values when they are stored as a string. This heavily reduces the data that has to be transmitted and it makes the values possible to use directly. As each float is four bytes and a CAN message can have eight bytes of data, each message can hold two values from the IMU. It requires a total of three messages to send all the data for each time the IMU generates an output. The current IMU output frequency is 20Hz. An issue with the IMU is that it can drift in yaw due to the nature of the implementation of the IMU hardware. To compensate, a FOG is added to only track the yaw orientation.  The FOG is generating an output voltage correlated to the rotation speed. This voltage has to be measured very precisely which is why it is connected to an external low noise ADC [http://www.ti.com/lit/ds/symlink/ads1255.pdf]. The ADC is sending the voltage value via SPI, this allows for a high bit rate which is needed to get a small integration interval. The ADC is acting as a slave in the SPI communication and it requires to first be selected through a slave select pin by pulling the voltage low. After that, it should be timed with a clock starting with a rising edge when sending or receiving data. The initial procedure of the CAN-card is to send instruction to set the sample frequency of the ADC and also tell it to send data continuously so the CAN-card can avoid asking for data each time. As the ADC uses 24 bits to store the voltage value, each measurement has to be sent over three transmissions as the word size of the SPI is eight bits. The CAN-card will turn the slave off by turning slave select pin high. 

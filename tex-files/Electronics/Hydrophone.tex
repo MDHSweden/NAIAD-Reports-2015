@@ -1,0 +1,18 @@
+\subsection{Hydrophone} %Patrik
+\noindent
+One of the missions in the RoboSub competition is to locate the resurfacing point. This location is marked with an acoustic pinger, located at the bottom of the pool underneath the exit site. The pinger sends out a 4 millisecond ultrasonic beep every 2 seconds \cite{robosubrules}. To determine the location of the pinger, four hydrophones are used to determine the direction the sound is coming from. By comparing the differences in time when the hydrophones hears the ping, a direction towards the source can be calculated. The reason for four hydrophones is that, to be able to locate a source in the 3 dimensions, observation of the signal will also be needed in 3 dimensions. With three hydrophones you would be able to get the the angle to the object in the plane, but not know how far off the plane the source is. This setup might have worked in the competition, with the pinger located on the bottom. Since the Naiad is built for a more general purpose, an exact direction in three dimensions is more usable in future applications.
+
+The sound from the pinger needs to be drastically amplified in order for the MCU to handle the signal.The water is not a silent place, so the signal has to be filtered in order to pick up the desired frequency. This is done by the hydrophone shield card, which picks up the signals from the four hydrophones. The card has three main tasks:
+\begin{itemize}
+\item{Phantom power}
+\\The hydrophones gives a much more desirable signal if they are supplied with a constant voltage. This is a done by a voltage division and a big capacitor for stabilization. This power supply can be used for all four hydrophones.
+\item{Filter and amplification}
+\\The signal runs through a passive high pass filter with a tunable cut off frequency. It is able to filter out frequencies below 10-50 kHz. After the filtering the signal is amplified in two stages. After an  initial amplification the signal is split. One unaltered signal is buffered. Another signal is used as reference voltage for the last amplification stage. These signals are fed as input to the last amplification, where the difference between these two signals are amplified almost 200 000 times to get a clear input to the mcu .
+\item{Digitalization and voltage restriction} \\
+After the final amplification, the signal is smoothend to a digital high by a capacitor and picked up by one of the interrupt pins on the CAN-card.
+
+\end{itemize}
+
+No equipment for testing the circuit properly has been available. The pinger in the lab is limited to 20kHz and the circuit has worked at close range. No open water test has been conducted. The motors rattle and make a lot of loud noises. Since these sounds origins from a source very close to the hydrophones and the sounds are built from a wide range of frequencies, the sound is almost impossible to filter away, at least with the analog filter approach. Therefor, the only way to pick up the sound from the pinger is to turn the thrusters off and listen, whilst dead in the water.
+
+A digital filter was ruled out due to lack of funds, time and hardware with high enough sampling frequency. The digital filter, with way sharper edges, may have been able to listen for the pings and completely remove any noise from the motors.  	

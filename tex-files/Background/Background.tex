@@ -1,0 +1,43 @@
+\section{Background}
+The Naiad project was started by 18 MSc students in the fall of 2013. Their aim was to enter RoboSub 2014 and to create an AUV which could help locate, map and possibly even remove some of the toxic and hazardous waist. 
+
+Since this project was already started, a lot of things were already done. When looking at the first list of requirements given from the client, a set of items could be crossed of immediately. 
+
+\begin{enumerate}
+\item Functional requirements
+\begin{enumerate}
+\item The robot should be built using a mono-hull.
+\item The hull should be easy to open and close.
+\item There should be indicators like LEDs and/or LCD-display.
+\item Actuators
+\begin{enumerate}
+\item Every actuator has its own micro-controller.
+\item All actuators should operate over the CAN-bus.
+\item The motors should preferable be BLDC, but ordinary DC-motors can be used.
+\end{enumerate}
+\item Sensors
+\begin{enumerate}
+\item All low rate sensors should operate over the CAN-bus.
+\item High speed sensors should operate over Ethernet (GIMME-2).
+\item Every sensor has its own compute power.
+\item There should be an 9-DOF IMU.
+\item There should be two stereo camera systems or one system that fast and accurate can tilt (Two GIMME-2).
+\end{enumerate}
+\item Communication
+\begin{enumerate}
+\item The communication system between nodes should use the CAN-bus.
+\end{enumerate}
+\item Software
+\item There should be a simulator for the mechanical and electronic parts.
+\end{enumerate}
+\item Nonfunctional requirements
+\begin{enumerate}
+\item The programming language should be Ada and using the Ravenscar profile.
+\item The preferred computer in the system is the GIMME-2.
+\item The batteries should be easy to change.
+\end{enumerate}
+\end{enumerate}
+
+This meant that the new team had some things to take in to account when the project started. Since the mono-hull was already made, this meant that the groups had to adapt. Other parts that were already done had to be continued. For example, there was a CAN-bus, however it was not functioning properly and this work had to be continued. 
+
+ 

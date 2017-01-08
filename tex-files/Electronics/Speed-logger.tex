@@ -1,0 +1,18 @@
+\subsection{Speed-logger} %Patrik
+\noindent
+The purpose and mechanical design of the speed logger can be found in section \ref{SL_mec}. The electronics parts of it is divided to an outer sensor and an inner analysing circuit.
+
+\subsubsection{Sensor}
+\noindent
+The sensor is based on two Allegro A1301 hall sensors. They translates differences in the magnetic field to analogue voltages. These are placed side by side with 5 mm spacing on a small PCB near the rotating turbine. 
+The propeller has magnets mounted on its blades, and by reading the timing differences between the sensors, rotational direction and speed can be determined.
+
+\subsubsection{Circuit}
+\noindent
+The signal from from the sensors needs to be altered in order to work as an interrupt edge for the responsible CAN-card.
+The IC circuits on the sensor has a default voltage of half of the supply voltage.
+To get an accurate reference voltage, a third A1301 sensor is used inside the hull as a reference voltage.
+The difference between the inside and outside sensors is amplified in order to trigger the interrupt on the MCU. 
+
+	
+	

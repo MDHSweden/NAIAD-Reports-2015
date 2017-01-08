@@ -1,0 +1,73 @@
+\section{Building / Cross Compiling OpenCV for GIMME-2}
+\label{OPENCV}
+\subsection{Install necessary packages }
+\begin{lstlisting}[language=bash]
+ $ sudo apt-get install build-essential
+ $ sudo apt-get install cmake
+\end{lstlisting}
+\subsection{Install  cross compiler }
+\begin{lstlisting}[language=bash]
+ $ sudo apt-get install gcc-arm-linux-gnueabi 
+ $ sudo apt-get install g++-arm-linux-gnueabi
+\end{lstlisting}
+\subsection{Create opencv directory }
+\begin{lstlisting}[language=bash]
+ $ mkdir opencv_build
+ $ cd opencv_build
+\end{lstlisting}
+\subsection{Download OpenCV}
+\begin{lstlisting}[language=bash]
+  $ git clone https://github.com/Itseez/opencv.git
+\end{lstlisting}
+To fix the version problem modify the compiler version in the platform file .
+\begin{lstlisting}[language=bash]
+ $ ./opencv/platforms/linux/arm-gnueabi.toolchain.cmake
+ \end{lstlisting}
+Changed the GCC\_COMPILER\_VERSION variable’s value from 4.6 to 4.7 to match installed compiler.\\
+Disable Opencl options by editing CmakeLists.txt  file, change ON to OFF in these three lines:\\
+OCV\_OPTION(WITH\_OPENCL  "Include OpenCL Runtime support"   ON  IF (NOT IOS) )\\
+OCV\_OPTION(WITH\_OPENCLAMDFFT   "Include AMD OpenCL FFT library support"  ON IF (NOT ANDROID AND NOT IOS) )\\
+OCV\_OPTION(WITH\_OPENCLAMDBLAS  "Include AMD OpenCL BLAS library support" ON IF (NOT ANDROID AND NOT IOS) )
+
+Now create a sub-directory called build and cd into it:
+\begin{lstlisting}[language=bash]
+ $ mkdir build  
+ $ cd build 
+\end{lstlisting}
+\subsection{Configure the build}
+\begin{lstlisting}[language=bash]
+ $ cmake -DSOFTFP=TRUE -DCMAKE_TOOLCHAIN_FILE=
+    ../opencv/platforms/linux/arm-gnueabi.toolchain.cmake ../opencv 
+\end{lstlisting}
+Now run ‘make’ and ‘make install’:
+\begin{lstlisting}[language=bash]
+ $ make 
+ $ make install
+\end{lstlisting}
+Now the user have all the include and lib files that the user need to build an OpenCV app for GIMME-2. Copy opencv\_libs and arm-linux-gnueabi\_libs to GIMME-2 board.
+
+\subsection{Cross compile the program} 
+\begin{lstlisting}[language=bash]
+ $ export PKG_CONFIG_PATH=../opencv/build/install/lib/pkgconfig  
+ $ arm-linux-gnueabi-g++  program.cpp `pkg-config --cflags --libs opencv`   
+ $ arm-linux-gnueabi-gcc  program.c `pkg-config --cflags --libs opencv` 
+\end{lstlisting}
+\subsection{Run the program on GIMME-2}
+\begin{lstlisting}[language=bash]
+ $ export LD_LIBRARY_PATH=/mnt/opencv_lib:
+    /sdcard/arm-linux-gnueabi_lib pkg-config --cflags --libs opencv 
+ $ ./program
+\end{lstlisting}
+\subsection{Build extra modules for GIMME-2}
+
+The user can build OpenCV, so it will include the modules from this repository. Here is the CMake command:
+\begin{lstlisting}[language=bash]
+ $ cd opencv_build_directory 
+ $ cmake -DOPENCV_EXTRA_MODULES_PATH=opencv_contrib/modules opencv_source_directory 
+ $ make  
+\end{lstlisting}
+If the user don't want all of the modules, use CMake's BUILD\_opencv\_* options. 
+\begin{lstlisting}[language=bash]
+ $ cmake -DOPENCV_EXTRA_MODULES_PATH=opencv_contrib/modules -DBUILD_opencv_legacy=
+    OFF opencv_source_directory
+\end{lstlisting}
